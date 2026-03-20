@@ -168,13 +168,12 @@
       max-width: 100%;
       max-height: 75vh;
       display: block;
+      opacity: 1;
+      transition: opacity 0.25s ease;
     }
 
-    .lightbox-caption {
-      margin-top: 15px;
-      font-size: 14px;
-      color: #666;
-      text-align: center;
+    .lightbox-image.fade-out {
+      opacity: 0;
     }
 
     @media (max-width: 700px) {
@@ -222,22 +221,22 @@
 
       <div class="thumb-grid" id="thumb-grid">
         <div class="thumb" data-index="0">
-          <img src="https://res.cloudinary.com/demo/image/upload/w_800/sample.jpg" alt="Photo 1">
+          <img src="https://res.cloudinary.com/demo/image/upload/w_800/sample.jpg" alt="Patagonia photo">
         </div>
         <div class="thumb" data-index="1">
-          <img src="https://res.cloudinary.com/demo/image/upload/w_800/samples/landscapes/nature-mountains.jpg" alt="Photo 2">
+          <img src="https://res.cloudinary.com/demo/image/upload/w_800/samples/landscapes/nature-mountains.jpg" alt="Patagonia photo">
         </div>
         <div class="thumb" data-index="2">
-          <img src="https://res.cloudinary.com/demo/image/upload/w_800/samples/animals/reindeer.jpg" alt="Photo 3">
+          <img src="https://res.cloudinary.com/demo/image/upload/w_800/samples/animals/reindeer.jpg" alt="Patagonia photo">
         </div>
         <div class="thumb" data-index="3">
-          <img src="https://res.cloudinary.com/demo/image/upload/w_800/samples/people/smiling-man.jpg" alt="Photo 4">
+          <img src="https://res.cloudinary.com/demo/image/upload/w_800/samples/people/smiling-man.jpg" alt="Patagonia photo">
         </div>
         <div class="thumb" data-index="4">
-          <img src="https://res.cloudinary.com/demo/image/upload/w_800/samples/sheep.jpg" alt="Photo 5">
+          <img src="https://res.cloudinary.com/demo/image/upload/w_800/samples/sheep.jpg" alt="Patagonia photo">
         </div>
         <div class="thumb" data-index="5">
-          <img src="https://res.cloudinary.com/demo/image/upload/w_800/samples/landscapes/beach-boat.jpg" alt="Photo 6">
+          <img src="https://res.cloudinary.com/demo/image/upload/w_800/samples/landscapes/beach-boat.jpg" alt="Patagonia photo">
         </div>
       </div>
     </section>
@@ -258,8 +257,6 @@
 
       <button class="lightbox-arrow" id="next-button">&#8250;</button>
     </div>
-
-    <div class="lightbox-caption" id="lightbox-caption"></div>
   </div>
 
   <script>
@@ -272,7 +269,6 @@
 
     const lightbox = document.getElementById('lightbox');
     const lightboxImage = document.getElementById('lightbox-image');
-    const lightboxCaption = document.getElementById('lightbox-caption');
     const closeLightbox = document.getElementById('close-lightbox');
     const prevButton = document.getElementById('prev-button');
     const nextButton = document.getElementById('next-button');
@@ -280,37 +276,32 @@
     const photos = [
       {
         thumb: 'https://res.cloudinary.com/demo/image/upload/w_800/sample.jpg',
-        full: 'https://res.cloudinary.com/demo/image/upload/w_1600/sample.jpg',
-        caption: 'Photo 1'
+        full: 'https://res.cloudinary.com/demo/image/upload/w_1600/sample.jpg'
       },
       {
         thumb: 'https://res.cloudinary.com/demo/image/upload/w_800/samples/landscapes/nature-mountains.jpg',
-        full: 'https://res.cloudinary.com/demo/image/upload/w_1600/samples/landscapes/nature-mountains.jpg',
-        caption: 'Photo 2'
+        full: 'https://res.cloudinary.com/demo/image/upload/w_1600/samples/landscapes/nature-mountains.jpg'
       },
       {
         thumb: 'https://res.cloudinary.com/demo/image/upload/w_800/samples/animals/reindeer.jpg',
-        full: 'https://res.cloudinary.com/demo/image/upload/w_1600/samples/animals/reindeer.jpg',
-        caption: 'Photo 3'
+        full: 'https://res.cloudinary.com/demo/image/upload/w_1600/samples/animals/reindeer.jpg'
       },
       {
         thumb: 'https://res.cloudinary.com/demo/image/upload/w_800/samples/people/smiling-man.jpg',
-        full: 'https://res.cloudinary.com/demo/image/upload/w_1600/samples/people/smiling-man.jpg',
-        caption: 'Photo 4'
+        full: 'https://res.cloudinary.com/demo/image/upload/w_1600/samples/people/smiling-man.jpg'
       },
       {
         thumb: 'https://res.cloudinary.com/demo/image/upload/w_800/samples/sheep.jpg',
-        full: 'https://res.cloudinary.com/demo/image/upload/w_1600/samples/sheep.jpg',
-        caption: 'Photo 5'
+        full: 'https://res.cloudinary.com/demo/image/upload/w_1600/samples/sheep.jpg'
       },
       {
         thumb: 'https://res.cloudinary.com/demo/image/upload/w_800/samples/landscapes/beach-boat.jpg',
-        full: 'https://res.cloudinary.com/demo/image/upload/w_1600/samples/landscapes/beach-boat.jpg',
-        caption: 'Photo 6'
+        full: 'https://res.cloudinary.com/demo/image/upload/w_1600/samples/landscapes/beach-boat.jpg'
       }
     ];
 
     let currentPhotoIndex = 0;
+    let isTransitioning = false;
 
     function showHome() {
       homeView.classList.add('active');
@@ -324,7 +315,8 @@
 
     function openLightbox(index) {
       currentPhotoIndex = index;
-      updateLightbox();
+      lightboxImage.src = photos[currentPhotoIndex].full;
+      lightboxImage.alt = 'Patagonia photo';
       lightbox.classList.add('open');
     }
 
@@ -332,20 +324,33 @@
       lightbox.classList.remove('open');
     }
 
-    function updateLightbox() {
-      lightboxImage.src = photos[currentPhotoIndex].full;
-      lightboxImage.alt = photos[currentPhotoIndex].caption;
-      lightboxCaption.textContent = photos[currentPhotoIndex].caption;
+    function changePhoto(newIndex) {
+      if (isTransitioning) return;
+
+      isTransitioning = true;
+      lightboxImage.classList.add('fade-out');
+
+      setTimeout(function() {
+        currentPhotoIndex = newIndex;
+        lightboxImage.src = photos[currentPhotoIndex].full;
+        lightboxImage.alt = 'Patagonia photo';
+
+        lightboxImage.onload = function() {
+          lightboxImage.classList.remove('fade-out');
+          isTransitioning = false;
+          lightboxImage.onload = null;
+        };
+      }, 180);
     }
 
     function showNextPhoto() {
-      currentPhotoIndex = (currentPhotoIndex + 1) % photos.length;
-      updateLightbox();
+      const newIndex = (currentPhotoIndex + 1) % photos.length;
+      changePhoto(newIndex);
     }
 
     function showPrevPhoto() {
-      currentPhotoIndex = (currentPhotoIndex - 1 + photos.length) % photos.length;
-      updateLightbox();
+      const newIndex = (currentPhotoIndex - 1 + photos.length) % photos.length;
+      changePhoto(newIndex);
     }
 
     patagoniaLink.addEventListener('click', function(event) {
