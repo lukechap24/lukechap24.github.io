@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gallery</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body id="top">
+  <div class="page">
+
+    <header>
+      <h1>Luke Chapman</h1>
+      <nav>
+        <a href="travels.html" id="travels-link">Travels</a>
+        <a href="colorado.html" id="colorado-link">Colorado</a>
+      </nav>
+    </header>
+
+    <section>
+      <a href="#" id="back-link" class="back-link">← Back</a>
+
+      <div class="gallery-heading">
+        <div class="gallery-title" id="gallery-title"></div>
+        <div class="gallery-subtitle" id="gallery-subtitle"></div>
+      </div>
+
+      <div class="thumb-grid" id="thumb-grid"></div>
+
+      <div class="bottom-meta">
+        <a href="#top" class="back-to-top">Back to top ↑</a>
+        <div class="full-divider"></div>
+        <div class="about">Minimal travel and portrait photography.</div>
+      </div>
+    </section>
+  </div>
+
+  <!-- LIGHTBOX -->
+  <div class="lightbox" id="lightbox">
+    <div class="lightbox-top">
+      <div id="lightbox-title"></div>
+      <button id="close-lightbox" class="lightbox-close">✕</button>
+    </div>
+
+    <div class="lightbox-content">
+      <button id="prev" class="lightbox-arrow">‹</button>
+
+      <div class="lightbox-image-wrap">
+        <img id="lightbox-img" class="lightbox-image">
+      </div>
+
+      <button id="next" class="lightbox-arrow">›</button>
+    </div>
+  </div>
+
+  <script src="galleries.js"></script>
+
+  <script>
+    function getGalleryKey() {
+      const params = new URLSearchParams(window.location.search);
+      return params.get("gallery");
+    }
+
+    function makeThumb(url) {
+      return url.replace("/w_1600/", "/w_600,h_750,c_fill/");
+    }
+
+    const galleryKey = getGalleryKey();
+    const gallery = galleries[galleryKey];
+
+    if (!gallery) {
+      document.body.innerHTML = "Gallery not found";
+    }
+
+    document.getElementById("gallery-title").textContent = gallery.title;
+    document.getElementById("gallery-subtitle").textContent =
+      `${gallery.date} · ${gallery.photos.length} photographs`;
+
+    const thumbGrid = document.getElementById("thumb-grid");
+
+    gallery.photos.forEach((photo, i) => {
+      const div = document.createElement("div");
+      div.className = "thumb";
+
+      const img = document.createElement("img");
+      img.src = makeThumb(photo);
+
+      div.appendChild(img);
+      div.onclick = () => openLightbox(i);
+
+      thumbGrid.appendChild(div);
+    });
+
+    // NAV HIGHLIGHT
+    if (gallery.section === "travels") {
+      document.getElementById("travels-link").classList.add("active");
+    } else {
+      document.getElementById("colorado-link").classList.add("active");
+    }
+
+    // BACK LINK
+    document.getElementById("back-link").onclick = function(e) {
+      e.preventDefault();
+      window.location.href = gallery.section + ".html";
+    };
+
+    // LIGHTBOX
+    const lightbox = document.getElementById("lightbox");
+    const imgEl = document.getElementById("lightbox-img");
+
+    let index = 0;
+
+    function openLightbox(i) {
+      index = i;
+      imgEl.src = gallery.photos[i];
+      lightbox.classList.add("open");
+    }
+
+    function closeLightbox() {
+      lightbox.classList.remove("open");
+    }
+
+    function next() {
+      index = (index + 1) % gallery.photos.length;
+      imgEl.src = gallery.photos[index];
+    }
+
+    function prev() {
+      index = (index - 1 + gallery.photos.length) % gallery.photos.length;
+      imgEl.src = gallery.photos[index];
+    }
+
+    document.getElementById("next").onclick = next;
+    document.getElementById("prev").onclick = prev;
+    document.getElementById("close-lightbox").onclick = closeLightbox;
+
+    document.addEventListener("keydown", (e) => {
+      if (!lightbox.classList.contains("open")) return;
+
+      if (e.key === "Escape") closeLightbox();
+      if (e.key === "ArrowRight") next();
+      if (e.key === "ArrowLeft") prev();
+    });
+
+    // BACK TO TOP
+    document.querySelectorAll(".back-to-top").forEach(btn => {
+      btn.onclick = (e) => {
+        e.preventDefault();
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      };
+    });
+  </script>
+</body>
+</html>
