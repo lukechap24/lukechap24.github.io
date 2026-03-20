@@ -118,12 +118,12 @@ nav a:hover {
 }
 
 .bottom-meta {
-  margin-top: 56px;
+  margin-top: 80px;
 }
 
 .back-to-top {
   display: inline-block;
-  margin-bottom: 20px;
+  margin-bottom: 14px;
   color: #8d8d8d;
   font-size: 13px;
   letter-spacing: 0.01em;
@@ -140,28 +140,28 @@ nav a:hover {
   width: 100vw;
   height: 1px;
   background: #e6e6e6;
+
   margin-left: calc(-50vw + 50%);
-  margin-top: 8px;
-  margin-bottom: 18px;
+  margin-top: 12px;
+  margin-bottom: 28px;   /* more breathing room */
 }
 
 .footer {
   display: flex;
   align-items: center;
-  gap: 18px;
+  gap: 20px;
+
   font-size: 13px;
-  color: #9a9a9a;
-  flex-wrap: wrap;
+  color: #a5a5a5;   /* softer gray */
 }
 
 .footer-left {
-  color: #888;
+  color: #9a9a9a;
 }
 
 .footer-right {
   display: flex;
-  gap: 18px;
-  flex-wrap: wrap;
+  gap: 20px;
 }
 
 .contact-link {
