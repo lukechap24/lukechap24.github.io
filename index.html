@@ -6,189 +6,45 @@
   <title>Luke Chapman Photography</title>
 
   <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: white;
-      color: #111;
-    }
+    body { margin: 0; font-family: Arial, sans-serif; background: white; color: #111; }
+    .page { max-width: 950px; margin: 0 auto; padding: 30px 20px 50px; }
 
-    .page {
-      max-width: 950px;
-      margin: 0 auto;
-      padding: 30px 20px 50px;
-    }
+    header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 40px; }
+    h1 { font-size: 16px; font-weight: 600; margin: 0; }
 
-    header {
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      margin-bottom: 40px;
-    }
+    nav a, .gallery-link, .back-link { text-decoration: none; color: #111; font-size: 14px; }
+    nav a { margin-left: 15px; }
+    nav a:hover, .gallery-link:hover, .back-link:hover { text-decoration: underline; }
 
-    h1 {
-      font-size: 16px;
-      font-weight: 600;
-      margin: 0;
-    }
+    .section-title { font-size: 14px; margin-bottom: 15px; }
+    .gallery-list { display: flex; flex-direction: column; gap: 10px; }
 
-    nav a,
-    .gallery-link,
-    .back-link {
-      text-decoration: none;
-      color: #111;
-      font-size: 14px;
-    }
+    .view { display: none; }
+    .view.active { display: block; }
 
-    nav a {
-      margin-left: 15px;
-    }
+    .gallery-title { font-size: 16px; font-weight: 600; margin: 18px 0 4px; }
+    .gallery-subtitle { font-size: 14px; color: #666; margin-bottom: 20px; }
 
-    nav a:hover,
-    .gallery-link:hover,
-    .back-link:hover {
-      text-decoration: underline;
-    }
+    .thumb-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
 
-    .section-title {
-      font-size: 14px;
-      margin-bottom: 15px;
-    }
+    .thumb { aspect-ratio: 4 / 5; background: #efefef; border: 1px solid #e4e4e4; overflow: hidden; cursor: pointer; }
+    .thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
-    .gallery-list {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
+    .about { margin-top: 50px; padding-top: 15px; border-top: 1px solid #eaeaea; max-width: 600px; font-size: 14px; color: #666; }
 
-    .view {
-      display: none;
-    }
+    .lightbox { display: none; position: fixed; inset: 0; background: rgba(255,255,255,0.96); z-index: 1000; padding: 20px; }
+    .lightbox.open { display: flex; flex-direction: column; }
 
-    .view.active {
-      display: block;
-    }
+    .lightbox-top { display: flex; justify-content: space-between; margin-bottom: 20px; }
+    .lightbox-close { background: none; border: none; cursor: pointer; }
 
-    .gallery-title {
-      font-size: 16px;
-      font-weight: 600;
-      margin: 18px 0 4px;
-    }
+    .lightbox-content { flex:1; display:grid; grid-template-columns:60px 1fr 60px; align-items:center; }
+    .lightbox-arrow { background:none; border:none; font-size:36px; color:#666; cursor:pointer; }
 
-    .gallery-subtitle {
-      font-size: 14px;
-      color: #666;
-      margin-bottom: 20px;
-    }
+    .lightbox-image { max-width:100%; max-height:75vh; opacity:1; transition:opacity .25s ease; }
+    .lightbox-image.fade-out { opacity:0; }
 
-    .thumb-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 10px;
-    }
-
-    .thumb {
-      aspect-ratio: 4 / 5;
-      background: #efefef;
-      border: 1px solid #e4e4e4;
-      overflow: hidden;
-      cursor: pointer;
-    }
-
-    .thumb img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
-
-    .about {
-      margin-top: 50px;
-      padding-top: 15px;
-      border-top: 1px solid #eaeaea;
-      max-width: 600px;
-      font-size: 14px;
-      color: #666;
-    }
-
-    .lightbox {
-      display: none;
-      position: fixed;
-      inset: 0;
-      background: rgba(255, 255, 255, 0.96);
-      z-index: 1000;
-      padding: 20px;
-    }
-
-    .lightbox.open {
-      display: flex;
-      flex-direction: column;
-    }
-
-    .lightbox-top {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 20px;
-    }
-
-    .lightbox-close {
-      background: none;
-      border: none;
-      font-size: 14px;
-      cursor: pointer;
-      color: #111;
-    }
-
-    .lightbox-content {
-      flex: 1;
-      display: grid;
-      grid-template-columns: 60px 1fr 60px;
-      align-items: center;
-      gap: 10px;
-      min-height: 0;
-    }
-
-    .lightbox-arrow {
-      background: none;
-      border: none;
-      font-size: 36px;
-      color: #666;
-      cursor: pointer;
-    }
-
-    .lightbox-image-wrap {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 0;
-    }
-
-    .lightbox-image {
-      max-width: 100%;
-      max-height: 75vh;
-      display: block;
-      opacity: 1;
-      transition: opacity 0.25s ease;
-    }
-
-    .lightbox-image.fade-out {
-      opacity: 0;
-    }
-
-    @media (max-width: 700px) {
-      .thumb-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .lightbox-content {
-        grid-template-columns: 40px 1fr 40px;
-      }
-
-      .lightbox-arrow {
-        font-size: 28px;
-      }
-    }
+    @media(max-width:700px){ .thumb-grid{grid-template-columns:1fr;} }
   </style>
 </head>
 <body>
@@ -196,12 +52,13 @@
     <header>
       <h1>Luke Chapman</h1>
       <nav>
-        <a href="#" id="home-link">Travels</a>
-        <a href="#">Moments</a>
+        <a href="#" id="travels-link">Travels</a>
+        <a href="#" id="colorado-link">Colorado</a>
       </nav>
     </header>
 
-    <section id="home-view" class="view active">
+    <!-- TRAVELS -->
+    <section id="travels-view" class="view active">
       <div class="section-title">Travels</div>
       <div class="gallery-list">
         <a class="gallery-link" href="#" id="patagonia-link">Patagonia - February, 2026</a>
@@ -209,197 +66,129 @@
         <a class="gallery-link" href="#">Iceland - June, 2025</a>
       </div>
 
-      <div class="about">
-        Minimal travel and portrait photography.
+      <div class="about">Minimal travel and portrait photography.</div>
+    </section>
+
+    <!-- COLORADO -->
+    <section id="colorado-view" class="view">
+      <div class="section-title">Colorado</div>
+      <div class="gallery-list">
+        <a class="gallery-link" href="#">Crested Butte - September, 2025</a>
+        <a class="gallery-link" href="#">Silverthorne - July, 2025</a>
       </div>
     </section>
 
+    <!-- GALLERY -->
     <section id="gallery-view" class="view">
       <a class="back-link" href="#" id="back-link">← Back</a>
       <div class="gallery-title">Patagonia - February, 2026</div>
-      <div class="gallery-subtitle">6 photographs</div>
-
-      <div class="thumb-grid" id="thumb-grid">
-        <div class="thumb" data-index="0">
-          <img src="https://res.cloudinary.com/demo/image/upload/w_800/sample.jpg" alt="Patagonia photo">
-        </div>
-        <div class="thumb" data-index="1">
-          <img src="https://res.cloudinary.com/demo/image/upload/w_800/samples/landscapes/nature-mountains.jpg" alt="Patagonia photo">
-        </div>
-        <div class="thumb" data-index="2">
-          <img src="https://res.cloudinary.com/demo/image/upload/w_800/samples/animals/reindeer.jpg" alt="Patagonia photo">
-        </div>
-        <div class="thumb" data-index="3">
-          <img src="https://res.cloudinary.com/demo/image/upload/w_800/samples/people/smiling-man.jpg" alt="Patagonia photo">
-        </div>
-        <div class="thumb" data-index="4">
-          <img src="https://res.cloudinary.com/demo/image/upload/w_800/samples/sheep.jpg" alt="Patagonia photo">
-        </div>
-        <div class="thumb" data-index="5">
-          <img src="https://res.cloudinary.com/demo/image/upload/w_800/samples/landscapes/beach-boat.jpg" alt="Patagonia photo">
-        </div>
-      </div>
+      <div class="gallery-subtitle" id="gallery-subtitle"></div>
+      <div class="thumb-grid" id="thumb-grid"></div>
     </section>
   </div>
 
   <div class="lightbox" id="lightbox">
     <div class="lightbox-top">
-      <div>Patagonia - February, 2026</div>
-      <button class="lightbox-close" id="close-lightbox">Close</button>
+      <div>Gallery</div>
+      <button id="close-lightbox">Close</button>
     </div>
 
     <div class="lightbox-content">
-      <button class="lightbox-arrow" id="prev-button">&#8249;</button>
-
-      <div class="lightbox-image-wrap">
-        <img class="lightbox-image" id="lightbox-image" src="" alt="">
-      </div>
-
-      <button class="lightbox-arrow" id="next-button">&#8250;</button>
+      <button id="prev-button">‹</button>
+      <img id="lightbox-image" class="lightbox-image" src="">
+      <button id="next-button">›</button>
     </div>
   </div>
 
   <script>
-    const homeView = document.getElementById('home-view');
+    const travelsView = document.getElementById('travels-view');
+    const coloradoView = document.getElementById('colorado-view');
     const galleryView = document.getElementById('gallery-view');
 
+    const travelsLink = document.getElementById('travels-link');
+    const coloradoLink = document.getElementById('colorado-link');
     const patagoniaLink = document.getElementById('patagonia-link');
     const backLink = document.getElementById('back-link');
-    const homeLink = document.getElementById('home-link');
+
+    const thumbGrid = document.getElementById('thumb-grid');
+    const gallerySubtitle = document.getElementById('gallery-subtitle');
 
     const lightbox = document.getElementById('lightbox');
     const lightboxImage = document.getElementById('lightbox-image');
-    const closeLightbox = document.getElementById('close-lightbox');
-    const prevButton = document.getElementById('prev-button');
-    const nextButton = document.getElementById('next-button');
 
     const photos = [
-      {
-        thumb: 'https://res.cloudinary.com/demo/image/upload/w_800/sample.jpg',
-        full: 'https://res.cloudinary.com/demo/image/upload/w_1600/sample.jpg'
-      },
-      {
-        thumb: 'https://res.cloudinary.com/demo/image/upload/w_800/samples/landscapes/nature-mountains.jpg',
-        full: 'https://res.cloudinary.com/demo/image/upload/w_1600/samples/landscapes/nature-mountains.jpg'
-      },
-      {
-        thumb: 'https://res.cloudinary.com/demo/image/upload/w_800/samples/animals/reindeer.jpg',
-        full: 'https://res.cloudinary.com/demo/image/upload/w_1600/samples/animals/reindeer.jpg'
-      },
-      {
-        thumb: 'https://res.cloudinary.com/demo/image/upload/w_800/samples/people/smiling-man.jpg',
-        full: 'https://res.cloudinary.com/demo/image/upload/w_1600/samples/people/smiling-man.jpg'
-      },
-      {
-        thumb: 'https://res.cloudinary.com/demo/image/upload/w_800/samples/sheep.jpg',
-        full: 'https://res.cloudinary.com/demo/image/upload/w_1600/samples/sheep.jpg'
-      },
-      {
-        thumb: 'https://res.cloudinary.com/demo/image/upload/w_800/samples/landscapes/beach-boat.jpg',
-        full: 'https://res.cloudinary.com/demo/image/upload/w_1600/samples/landscapes/beach-boat.jpg'
-      }
+      { thumb: 'https://res.cloudinary.com/demo/image/upload/w_800/sample.jpg', full: 'https://res.cloudinary.com/demo/image/upload/w_1600/sample.jpg' },
+      { thumb: 'https://res.cloudinary.com/demo/image/upload/w_800/samples/landscapes/nature-mountains.jpg', full: 'https://res.cloudinary.com/demo/image/upload/w_1600/samples/landscapes/nature-mountains.jpg' }
     ];
 
     let currentPhotoIndex = 0;
-    let isTransitioning = false;
 
-    function showHome() {
-      homeView.classList.add('active');
+    function showView(view){
+      travelsView.classList.remove('active');
+      coloradoView.classList.remove('active');
       galleryView.classList.remove('active');
+      view.classList.add('active');
     }
 
-    function showGallery() {
-      homeView.classList.remove('active');
-      galleryView.classList.add('active');
+    function renderThumbnails(){
+      thumbGrid.innerHTML='';
+      gallerySubtitle.textContent = `${photos.length} photographs`;
+
+      photos.forEach((photo,index)=>{
+        const div=document.createElement('div');
+        div.className='thumb';
+
+        const img=document.createElement('img');
+        img.src=photo.thumb;
+
+        div.appendChild(img);
+        div.onclick=()=>openLightbox(index);
+        thumbGrid.appendChild(div);
+      });
     }
 
-    function openLightbox(index) {
-      currentPhotoIndex = index;
-      lightboxImage.src = photos[currentPhotoIndex].full;
-      lightboxImage.alt = 'Patagonia photo';
+    function openLightbox(index){
+      currentPhotoIndex=index;
+      lightboxImage.src=photos[index].full;
       lightbox.classList.add('open');
     }
 
-    function closeLightboxFn() {
-      lightbox.classList.remove('open');
-    }
-
-    function changePhoto(newIndex) {
-      if (isTransitioning) return;
-
-      isTransitioning = true;
+    function changePhoto(i){
       lightboxImage.classList.add('fade-out');
-
-      setTimeout(function() {
-        currentPhotoIndex = newIndex;
-        lightboxImage.src = photos[currentPhotoIndex].full;
-        lightboxImage.alt = 'Patagonia photo';
-
-        lightboxImage.onload = function() {
+      setTimeout(()=>{
+        currentPhotoIndex=i;
+        lightboxImage.src=photos[i].full;
+        lightboxImage.onload=()=>{
           lightboxImage.classList.remove('fade-out');
-          isTransitioning = false;
-          lightboxImage.onload = null;
-        };
-      }, 180);
+        }
+      },150);
     }
 
-    function showNextPhoto() {
-      const newIndex = (currentPhotoIndex + 1) % photos.length;
-      changePhoto(newIndex);
-    }
+    document.getElementById('next-button').onclick=()=>{
+      changePhoto((currentPhotoIndex+1)%photos.length);
+    };
 
-    function showPrevPhoto() {
-      const newIndex = (currentPhotoIndex - 1 + photos.length) % photos.length;
-      changePhoto(newIndex);
-    }
+    document.getElementById('prev-button').onclick=()=>{
+      changePhoto((currentPhotoIndex-1+photos.length)%photos.length);
+    };
 
-    patagoniaLink.addEventListener('click', function(event) {
-      event.preventDefault();
-      showGallery();
-    });
+    document.getElementById('close-lightbox').onclick=()=>{
+      lightbox.classList.remove('open');
+    };
 
-    backLink.addEventListener('click', function(event) {
-      event.preventDefault();
-      showHome();
-    });
+    travelsLink.onclick=(e)=>{e.preventDefault();showView(travelsView);};
+    coloradoLink.onclick=(e)=>{e.preventDefault();showView(coloradoView);};
 
-    homeLink.addEventListener('click', function(event) {
-      event.preventDefault();
-      showHome();
-    });
+    patagoniaLink.onclick=(e)=>{
+      e.preventDefault();
+      showView(galleryView);
+      renderThumbnails();
+    };
 
-    document.querySelectorAll('.thumb').forEach(function(thumb) {
-      thumb.addEventListener('click', function() {
-        const index = Number(this.dataset.index);
-        openLightbox(index);
-      });
-    });
-
-    closeLightbox.addEventListener('click', closeLightboxFn);
-    nextButton.addEventListener('click', showNextPhoto);
-    prevButton.addEventListener('click', showPrevPhoto);
-
-    document.addEventListener('keydown', function(event) {
-      if (!lightbox.classList.contains('open')) return;
-
-      if (event.key === 'Escape') {
-        closeLightboxFn();
-      }
-
-      if (event.key === 'ArrowRight') {
-        showNextPhoto();
-      }
-
-      if (event.key === 'ArrowLeft') {
-        showPrevPhoto();
-      }
-    });
-
-    lightbox.addEventListener('click', function(event) {
-      if (event.target === lightbox) {
-        closeLightboxFn();
-      }
-    });
+    backLink.onclick=(e)=>{
+      e.preventDefault();
+      showView(travelsView);
+    };
   </script>
 </body>
 </html>
