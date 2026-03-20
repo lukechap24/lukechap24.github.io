@@ -91,11 +91,15 @@
       aspect-ratio: 4 / 5;
       background: #efefef;
       border: 1px solid #e4e4e4;
+      overflow: hidden;
+      cursor: pointer;
     }
 
-    .thumb.large {
-      grid-column: span 2;
-      aspect-ratio: 8 / 5;
+    .thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
     }
 
     .about {
@@ -107,14 +111,83 @@
       color: #666;
     }
 
+    .lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(255, 255, 255, 0.96);
+      z-index: 1000;
+      padding: 20px;
+    }
+
+    .lightbox.open {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .lightbox-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .lightbox-close {
+      background: none;
+      border: none;
+      font-size: 14px;
+      cursor: pointer;
+      color: #111;
+    }
+
+    .lightbox-content {
+      flex: 1;
+      display: grid;
+      grid-template-columns: 60px 1fr 60px;
+      align-items: center;
+      gap: 10px;
+      min-height: 0;
+    }
+
+    .lightbox-arrow {
+      background: none;
+      border: none;
+      font-size: 36px;
+      color: #666;
+      cursor: pointer;
+    }
+
+    .lightbox-image-wrap {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 0;
+    }
+
+    .lightbox-image {
+      max-width: 100%;
+      max-height: 75vh;
+      display: block;
+    }
+
+    .lightbox-caption {
+      margin-top: 15px;
+      font-size: 14px;
+      color: #666;
+      text-align: center;
+    }
+
     @media (max-width: 700px) {
       .thumb-grid {
         grid-template-columns: 1fr;
       }
 
-      .thumb.large {
-        grid-column: span 1;
-        aspect-ratio: 4 / 5;
+      .lightbox-content {
+        grid-template-columns: 40px 1fr 40px;
+      }
+
+      .lightbox-arrow {
+        font-size: 28px;
       }
     }
   </style>
@@ -145,17 +218,48 @@
     <section id="gallery-view" class="view">
       <a class="back-link" href="#" id="back-link">← Back</a>
       <div class="gallery-title">Patagonia - February, 2026</div>
-      <div class="gallery-subtitle">8 photographs</div>
+      <div class="gallery-subtitle">6 photographs</div>
 
-      <div class="thumb-grid">
-        <div class="thumb large"></div>
-        <div class="thumb"></div>
-        <div class="thumb"></div>
-        <div class="thumb"></div>
-        <div class="thumb large"></div>
-        <div class="thumb"></div>
+      <div class="thumb-grid" id="thumb-grid">
+        <div class="thumb" data-index="0">
+          <img src="https://res.cloudinary.com/demo/image/upload/w_800/sample.jpg" alt="Photo 1">
+        </div>
+        <div class="thumb" data-index="1">
+          <img src="https://res.cloudinary.com/demo/image/upload/w_800/samples/landscapes/nature-mountains.jpg" alt="Photo 2">
+        </div>
+        <div class="thumb" data-index="2">
+          <img src="https://res.cloudinary.com/demo/image/upload/w_800/samples/animals/reindeer.jpg" alt="Photo 3">
+        </div>
+        <div class="thumb" data-index="3">
+          <img src="https://res.cloudinary.com/demo/image/upload/w_800/samples/people/smiling-man.jpg" alt="Photo 4">
+        </div>
+        <div class="thumb" data-index="4">
+          <img src="https://res.cloudinary.com/demo/image/upload/w_800/samples/sheep.jpg" alt="Photo 5">
+        </div>
+        <div class="thumb" data-index="5">
+          <img src="https://res.cloudinary.com/demo/image/upload/w_800/samples/landscapes/beach-boat.jpg" alt="Photo 6">
+        </div>
       </div>
     </section>
+  </div>
+
+  <div class="lightbox" id="lightbox">
+    <div class="lightbox-top">
+      <div>Patagonia - February, 2026</div>
+      <button class="lightbox-close" id="close-lightbox">Close</button>
+    </div>
+
+    <div class="lightbox-content">
+      <button class="lightbox-arrow" id="prev-button">&#8249;</button>
+
+      <div class="lightbox-image-wrap">
+        <img class="lightbox-image" id="lightbox-image" src="" alt="">
+      </div>
+
+      <button class="lightbox-arrow" id="next-button">&#8250;</button>
+    </div>
+
+    <div class="lightbox-caption" id="lightbox-caption"></div>
   </div>
 
   <script>
@@ -166,6 +270,48 @@
     const backLink = document.getElementById('back-link');
     const homeLink = document.getElementById('home-link');
 
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImage = document.getElementById('lightbox-image');
+    const lightboxCaption = document.getElementById('lightbox-caption');
+    const closeLightbox = document.getElementById('close-lightbox');
+    const prevButton = document.getElementById('prev-button');
+    const nextButton = document.getElementById('next-button');
+
+    const photos = [
+      {
+        thumb: 'https://res.cloudinary.com/demo/image/upload/w_800/sample.jpg',
+        full: 'https://res.cloudinary.com/demo/image/upload/w_1600/sample.jpg',
+        caption: 'Photo 1'
+      },
+      {
+        thumb: 'https://res.cloudinary.com/demo/image/upload/w_800/samples/landscapes/nature-mountains.jpg',
+        full: 'https://res.cloudinary.com/demo/image/upload/w_1600/samples/landscapes/nature-mountains.jpg',
+        caption: 'Photo 2'
+      },
+      {
+        thumb: 'https://res.cloudinary.com/demo/image/upload/w_800/samples/animals/reindeer.jpg',
+        full: 'https://res.cloudinary.com/demo/image/upload/w_1600/samples/animals/reindeer.jpg',
+        caption: 'Photo 3'
+      },
+      {
+        thumb: 'https://res.cloudinary.com/demo/image/upload/w_800/samples/people/smiling-man.jpg',
+        full: 'https://res.cloudinary.com/demo/image/upload/w_1600/samples/people/smiling-man.jpg',
+        caption: 'Photo 4'
+      },
+      {
+        thumb: 'https://res.cloudinary.com/demo/image/upload/w_800/samples/sheep.jpg',
+        full: 'https://res.cloudinary.com/demo/image/upload/w_1600/samples/sheep.jpg',
+        caption: 'Photo 5'
+      },
+      {
+        thumb: 'https://res.cloudinary.com/demo/image/upload/w_800/samples/landscapes/beach-boat.jpg',
+        full: 'https://res.cloudinary.com/demo/image/upload/w_1600/samples/landscapes/beach-boat.jpg',
+        caption: 'Photo 6'
+      }
+    ];
+
+    let currentPhotoIndex = 0;
+
     function showHome() {
       homeView.classList.add('active');
       galleryView.classList.remove('active');
@@ -174,6 +320,32 @@
     function showGallery() {
       homeView.classList.remove('active');
       galleryView.classList.add('active');
+    }
+
+    function openLightbox(index) {
+      currentPhotoIndex = index;
+      updateLightbox();
+      lightbox.classList.add('open');
+    }
+
+    function closeLightboxFn() {
+      lightbox.classList.remove('open');
+    }
+
+    function updateLightbox() {
+      lightboxImage.src = photos[currentPhotoIndex].full;
+      lightboxImage.alt = photos[currentPhotoIndex].caption;
+      lightboxCaption.textContent = photos[currentPhotoIndex].caption;
+    }
+
+    function showNextPhoto() {
+      currentPhotoIndex = (currentPhotoIndex + 1) % photos.length;
+      updateLightbox();
+    }
+
+    function showPrevPhoto() {
+      currentPhotoIndex = (currentPhotoIndex - 1 + photos.length) % photos.length;
+      updateLightbox();
     }
 
     patagoniaLink.addEventListener('click', function(event) {
@@ -189,6 +361,39 @@
     homeLink.addEventListener('click', function(event) {
       event.preventDefault();
       showHome();
+    });
+
+    document.querySelectorAll('.thumb').forEach(function(thumb) {
+      thumb.addEventListener('click', function() {
+        const index = Number(this.dataset.index);
+        openLightbox(index);
+      });
+    });
+
+    closeLightbox.addEventListener('click', closeLightboxFn);
+    nextButton.addEventListener('click', showNextPhoto);
+    prevButton.addEventListener('click', showPrevPhoto);
+
+    document.addEventListener('keydown', function(event) {
+      if (!lightbox.classList.contains('open')) return;
+
+      if (event.key === 'Escape') {
+        closeLightboxFn();
+      }
+
+      if (event.key === 'ArrowRight') {
+        showNextPhoto();
+      }
+
+      if (event.key === 'ArrowLeft') {
+        showPrevPhoto();
+      }
+    });
+
+    lightbox.addEventListener('click', function(event) {
+      if (event.target === lightbox) {
+        closeLightboxFn();
+      }
     });
   </script>
 </body>
