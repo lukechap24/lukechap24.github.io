@@ -330,3 +330,47 @@ nav a:hover {
     font-size: 28px;
   }
 }
+
+/* FOOTER */
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+  font-size: 14px;
+  color: #777;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.footer-left {
+  color: #111;
+}
+
+.footer-right {
+  display: flex;
+  gap: 18px;
+}
+
+/* link styling */
+.contact-link {
+  text-decoration: none;
+  color: inherit;
+  position: relative;
+}
+
+.contact-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 100%;
+  height: 1px;
+  background: #ccc;
+  transition: background 0.2s ease;
+}
+
+.contact-link:hover::after {
+  background: #111;
+}
