@@ -1,5 +1,6 @@
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 body {
@@ -7,6 +8,7 @@ body {
   font-family: Manrope, Arial, sans-serif;
   background: white;
   color: #111;
+  overflow-x: hidden;
 }
 
 .page {
