@@ -7,188 +7,114 @@
 
   <style>
     body { margin: 0; font-family: Arial, sans-serif; background: white; color: #111; }
-    .page { max-width: 950px; margin: 0 auto; padding: 30px 20px 50px; }
+    .page { max-width: 1000px; margin: 0 auto; padding: 30px 20px 60px; }
 
-    header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 40px; }
-    h1 { font-size: 16px; font-weight: 600; margin: 0; }
+    header { text-align: center; margin-bottom: 40px; }
+    h1 { font-size: 20px; font-weight: 600; margin-bottom: 10px; }
 
-    nav a, .gallery-link, .back-link { text-decoration: none; color: #111; font-size: 14px; }
-    nav a { margin-left: 15px; }
-    nav a:hover, .gallery-link:hover, .back-link:hover { text-decoration: underline; }
+    nav a { margin: 0 10px; text-decoration: none; color: #999; }
+    nav a.active { color: #111; }
 
-    .section-title { font-size: 14px; margin-bottom: 15px; }
-    .gallery-list { display: flex; flex-direction: column; gap: 10px; }
+    .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
+
+    .folder { text-align: center; cursor: pointer; }
+
+    .folder img { width: 100%; aspect-ratio: 4/3; object-fit: cover; }
+
+    .folder-title { margin-top: 10px; font-size: 15px; }
+    .folder-date { font-size: 12px; color: #999; margin-top: 4px; }
+
+    .about { margin-top: 60px; padding-top: 20px; border-top: 1px solid #eee; color: #777; font-size: 14px; text-align: left; max-width: 600px; }
 
     .view { display: none; }
     .view.active { display: block; }
 
-    .gallery-title { font-size: 16px; font-weight: 600; margin: 18px 0 4px; }
-    .gallery-subtitle { font-size: 14px; color: #666; margin-bottom: 20px; }
-
-    .thumb-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
-
-    .thumb { aspect-ratio: 4 / 5; background: #efefef; border: 1px solid #e4e4e4; overflow: hidden; cursor: pointer; }
-    .thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
-
-    .about { margin-top: 50px; padding-top: 15px; border-top: 1px solid #eaeaea; max-width: 600px; font-size: 14px; color: #666; }
-
-    .lightbox { display: none; position: fixed; inset: 0; background: rgba(255,255,255,0.96); z-index: 1000; padding: 20px; }
-    .lightbox.open { display: flex; flex-direction: column; }
-
-    .lightbox-top { display: flex; justify-content: space-between; margin-bottom: 20px; }
-    .lightbox-close { background: none; border: none; cursor: pointer; }
-
-    .lightbox-content { flex:1; display:grid; grid-template-columns:60px 1fr 60px; align-items:center; }
-    .lightbox-arrow { background:none; border:none; font-size:36px; color:#666; cursor:pointer; }
-
-    .lightbox-image { max-width:100%; max-height:75vh; opacity:1; transition:opacity .25s ease; }
-    .lightbox-image.fade-out { opacity:0; }
-
-    @media(max-width:700px){ .thumb-grid{grid-template-columns:1fr;} }
+    @media(max-width:800px){ .grid{grid-template-columns:1fr;} }
   </style>
 </head>
 <body>
-  <div class="page">
-    <header>
-      <h1>Luke Chapman</h1>
-      <nav>
-        <a href="#" id="travels-link">Travels</a>
-        <a href="#" id="colorado-link">Colorado</a>
-      </nav>
-    </header>
+<div class="page">
 
-    <!-- TRAVELS -->
-    <section id="travels-view" class="view active">
-      <div class="section-title">Travels</div>
-      <div class="gallery-list">
-        <a class="gallery-link" href="#" id="patagonia-link">Patagonia - February, 2026</a>
-        <a class="gallery-link" href="#">Japan - October, 2025</a>
-        <a class="gallery-link" href="#">Iceland - June, 2025</a>
-      </div>
+<header>
+  <h1>Luke Chapman</h1>
+  <nav>
+    <a href="#" id="travels-link" class="active">Travels</a>
+    <a href="#" id="colorado-link">Colorado</a>
+  </nav>
+</header>
 
-      <div class="about">Minimal travel and portrait photography.</div>
-    </section>
+<!-- TRAVELS -->
+<section id="travels-view" class="view active">
+  <div class="grid">
 
-    <!-- COLORADO -->
-    <section id="colorado-view" class="view">
-      <div class="section-title">Colorado</div>
-      <div class="gallery-list">
-        <a class="gallery-link" href="#">Crested Butte - September, 2025</a>
-        <a class="gallery-link" href="#">Silverthorne - July, 2025</a>
-      </div>
-    </section>
-
-    <!-- GALLERY -->
-    <section id="gallery-view" class="view">
-      <a class="back-link" href="#" id="back-link">← Back</a>
-      <div class="gallery-title">Patagonia - February, 2026</div>
-      <div class="gallery-subtitle" id="gallery-subtitle"></div>
-      <div class="thumb-grid" id="thumb-grid"></div>
-    </section>
-  </div>
-
-  <div class="lightbox" id="lightbox">
-    <div class="lightbox-top">
-      <div>Gallery</div>
-      <button id="close-lightbox">Close</button>
+    <div class="folder" id="patagonia-link">
+      <img src="https://res.cloudinary.com/demo/image/upload/w_800/sample.jpg">
+      <div class="folder-title">Patagonia</div>
+      <div class="folder-date">February, 2026</div>
     </div>
 
-    <div class="lightbox-content">
-      <button id="prev-button">‹</button>
-      <img id="lightbox-image" class="lightbox-image" src="">
-      <button id="next-button">›</button>
+    <div class="folder">
+      <img src="https://res.cloudinary.com/demo/image/upload/w_800/samples/landscapes/nature-mountains.jpg">
+      <div class="folder-title">Japan</div>
+      <div class="folder-date">October, 2025</div>
     </div>
+
+    <div class="folder">
+      <img src="https://res.cloudinary.com/demo/image/upload/w_800/samples/animals/reindeer.jpg">
+      <div class="folder-title">Iceland</div>
+      <div class="folder-date">June, 2025</div>
+    </div>
+
   </div>
 
-  <script>
-    const travelsView = document.getElementById('travels-view');
-    const coloradoView = document.getElementById('colorado-view');
-    const galleryView = document.getElementById('gallery-view');
+  <div class="about">Minimal travel and portrait photography.</div>
+</section>
 
-    const travelsLink = document.getElementById('travels-link');
-    const coloradoLink = document.getElementById('colorado-link');
-    const patagoniaLink = document.getElementById('patagonia-link');
-    const backLink = document.getElementById('back-link');
+<!-- COLORADO -->
+<section id="colorado-view" class="view">
+  <div class="grid">
 
-    const thumbGrid = document.getElementById('thumb-grid');
-    const gallerySubtitle = document.getElementById('gallery-subtitle');
+    <div class="folder">
+      <img src="https://res.cloudinary.com/demo/image/upload/w_800/samples/people/smiling-man.jpg">
+      <div class="folder-title">Crested Butte</div>
+      <div class="folder-date">September, 2025</div>
+    </div>
 
-    const lightbox = document.getElementById('lightbox');
-    const lightboxImage = document.getElementById('lightbox-image');
+    <div class="folder">
+      <img src="https://res.cloudinary.com/demo/image/upload/w_800/samples/sheep.jpg">
+      <div class="folder-title">Silverthorne</div>
+      <div class="folder-date">July, 2025</div>
+    </div>
 
-    const photos = [
-      { thumb: 'https://res.cloudinary.com/demo/image/upload/w_800/sample.jpg', full: 'https://res.cloudinary.com/demo/image/upload/w_1600/sample.jpg' },
-      { thumb: 'https://res.cloudinary.com/demo/image/upload/w_800/samples/landscapes/nature-mountains.jpg', full: 'https://res.cloudinary.com/demo/image/upload/w_1600/samples/landscapes/nature-mountains.jpg' }
-    ];
+  </div>
 
-    let currentPhotoIndex = 0;
+  <div class="about">Minimal travel and portrait photography.</div>
+</section>
 
-    function showView(view){
-      travelsView.classList.remove('active');
-      coloradoView.classList.remove('active');
-      galleryView.classList.remove('active');
-      view.classList.add('active');
-    }
+</div>
 
-    function renderThumbnails(){
-      thumbGrid.innerHTML='';
-      gallerySubtitle.textContent = `${photos.length} photographs`;
+<script>
+const travelsView = document.getElementById('travels-view');
+const coloradoView = document.getElementById('colorado-view');
 
-      photos.forEach((photo,index)=>{
-        const div=document.createElement('div');
-        div.className='thumb';
+const travelsLink = document.getElementById('travels-link');
+const coloradoLink = document.getElementById('colorado-link');
 
-        const img=document.createElement('img');
-        img.src=photo.thumb;
+function show(view){
+  travelsView.classList.remove('active');
+  coloradoView.classList.remove('active');
+  view.classList.add('active');
 
-        div.appendChild(img);
-        div.onclick=()=>openLightbox(index);
-        thumbGrid.appendChild(div);
-      });
-    }
+  travelsLink.classList.remove('active');
+  coloradoLink.classList.remove('active');
 
-    function openLightbox(index){
-      currentPhotoIndex=index;
-      lightboxImage.src=photos[index].full;
-      lightbox.classList.add('open');
-    }
+  if(view===travelsView) travelsLink.classList.add('active');
+  else coloradoLink.classList.add('active');
+}
 
-    function changePhoto(i){
-      lightboxImage.classList.add('fade-out');
-      setTimeout(()=>{
-        currentPhotoIndex=i;
-        lightboxImage.src=photos[i].full;
-        lightboxImage.onload=()=>{
-          lightboxImage.classList.remove('fade-out');
-        }
-      },150);
-    }
+travelsLink.onclick=(e)=>{e.preventDefault();show(travelsView);};
+coloradoLink.onclick=(e)=>{e.preventDefault();show(coloradoView);};
+</script>
 
-    document.getElementById('next-button').onclick=()=>{
-      changePhoto((currentPhotoIndex+1)%photos.length);
-    };
-
-    document.getElementById('prev-button').onclick=()=>{
-      changePhoto((currentPhotoIndex-1+photos.length)%photos.length);
-    };
-
-    document.getElementById('close-lightbox').onclick=()=>{
-      lightbox.classList.remove('open');
-    };
-
-    travelsLink.onclick=(e)=>{e.preventDefault();showView(travelsView);};
-    coloradoLink.onclick=(e)=>{e.preventDefault();showView(coloradoView);};
-
-    patagoniaLink.onclick=(e)=>{
-      e.preventDefault();
-      showView(galleryView);
-      renderThumbnails();
-    };
-
-    backLink.onclick=(e)=>{
-      e.preventDefault();
-      showView(travelsView);
-    };
-  </script>
 </body>
 </html>
