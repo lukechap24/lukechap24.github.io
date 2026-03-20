@@ -72,6 +72,15 @@ nav a:hover {
   color: #111;
 }
 
+.home-link {
+  text-decoration: none;
+  color: inherit;
+}
+
+.home-link:hover {
+  opacity: 0.7;
+}
+
 /* GRID */
 
 .grid {
