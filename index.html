@@ -313,6 +313,20 @@
         grid-template-columns: 1fr;
       }
 
+      /* keep thumbnails 3 per row even on smaller screens */
+      .thumb-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .lightbox-content {
+        grid-template-columns: 40px minmax(0, 1fr) 40px;
+      }
+
+      .lightbox-arrow {
+        font-size: 28px;
+      }
+    }
+
       .thumb-grid {
         grid-template-columns: 1fr;
       }
