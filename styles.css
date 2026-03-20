@@ -9,6 +9,7 @@ body {
   background: white;
   color: #111;
   overflow-x: hidden;
+  overflow-y: scroll;
 }
 
 .page {
