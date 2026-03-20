@@ -7,7 +7,9 @@
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500&display=swap" rel="stylesheet">
 
   <style>
-    html { scroll-behavior: smooth; }
+    html {
+      scroll-behavior: smooth;
+    }
 
     body {
       margin: 0;
@@ -112,19 +114,10 @@
       letter-spacing: 0.01em;
       color: #222;
     }
-      margin-top: 12px;
-      font-size: 15px;
-      line-height: 1.35;
-      letter-spacing: 0.01em;
-    }
 
     .folder-date {
       font-size: 12px;
       color: #a0a0a0;
-      margin-top: 5px;
-    }
-      font-size: 12px;
-      color: #9a9a9a;
       margin-top: 5px;
     }
 
@@ -175,8 +168,6 @@
       padding-top: 10px;
       border-top: 1px solid #eee;
     }
-      margin-bottom: 18px;
-    }
 
     .gallery-title {
       font-size: 17px;
@@ -185,30 +176,22 @@
       margin: 0 0 5px;
       color: #222;
     }
-      font-size: 17px;
-      font-weight: 500;
-      letter-spacing: 0.01em;
-      margin: 0 0 5px;
-    }
 
     .gallery-subtitle {
       font-size: 13px;
       color: #a0a0a0;
     }
-      font-size: 13px;
-      color: #9a9a9a;
-    }
 
     .thumb-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 12px;
       margin-top: 22px;
     }
 
     .thumb {
       width: 100%;
-      aspect-ratio: 1 / 1;
+      aspect-ratio: 4 / 5;
       overflow: hidden;
       cursor: pointer;
       background: #efefef;
@@ -314,22 +297,8 @@
         grid-template-columns: 1fr;
       }
 
-      /* keep thumbnails 3 per row even on smaller screens */
       .thumb-grid {
-        grid-template-columns: repeat(3, 1fr);
-      }
-
-      .lightbox-content {
-        grid-template-columns: 40px minmax(0, 1fr) 40px;
-      }
-
-      .lightbox-arrow {
-        font-size: 28px;
-      }
-    }
-
-      .thumb-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
       }
 
       .lightbox-content {
@@ -453,7 +422,7 @@
     const nextButton = document.getElementById('next');
 
     const galleries = {
-      'patagonia': {
+      patagonia: {
         title: 'Patagonia',
         date: 'February, 2026',
         section: 'travels',
@@ -466,7 +435,7 @@
           'https://res.cloudinary.com/demo/image/upload/w_1600/samples/landscapes/beach-boat.jpg'
         ]
       },
-      'japan': {
+      japan: {
         title: 'Japan',
         date: 'October, 2025',
         section: 'travels',
@@ -479,7 +448,7 @@
           'https://res.cloudinary.com/demo/image/upload/w_1600/samples/ecommerce/analog-classic.jpg'
         ]
       },
-      'iceland': {
+      iceland: {
         title: 'Iceland',
         date: 'June, 2025',
         section: 'travels',
@@ -505,7 +474,7 @@
           'https://res.cloudinary.com/demo/image/upload/w_1600/samples/landscapes/girl-urban-view.jpg'
         ]
       },
-      'silverthorne': {
+      silverthorne: {
         title: 'Silverthorne',
         date: 'July, 2025',
         section: 'colorado',
@@ -524,6 +493,10 @@
     let currentPhotoIndex = 0;
     let currentPhotos = [];
     let isTransitioning = false;
+
+    function makeThumbUrl(fullUrl) {
+      return fullUrl.replace('/w_1600/', '/w_600,h_750,c_fill/');
+    }
 
     function showView(view) {
       travelsView.classList.remove('active');
@@ -561,11 +534,11 @@
         thumb.className = 'thumb';
 
         const img = document.createElement('img');
-        img.src = photoUrl;
+        img.src = makeThumbUrl(photoUrl);
         img.alt = `${gallery.title} photo`;
 
         thumb.appendChild(img);
-        thumb.addEventListener('click', function() {
+        thumb.addEventListener('click', function () {
           openLightbox(index);
         });
 
@@ -594,10 +567,10 @@
       isTransitioning = true;
       lightboxImg.classList.add('fade-out');
 
-      setTimeout(function() {
+      setTimeout(function () {
         currentPhotoIndex = newIndex;
         lightboxImg.src = currentPhotos[newIndex];
-        lightboxImg.onload = function() {
+        lightboxImg.onload = function () {
           lightboxImg.classList.remove('fade-out');
           isTransitioning = false;
           lightboxImg.onload = null;
@@ -613,13 +586,13 @@
       changePhoto((currentPhotoIndex - 1 + currentPhotos.length) % currentPhotos.length);
     }
 
-    document.querySelectorAll('.folder').forEach(function(folder) {
-      folder.addEventListener('click', function() {
+    document.querySelectorAll('.folder').forEach(function (folder) {
+      folder.addEventListener('click', function () {
         renderGallery(this.dataset.gallery);
       });
     });
 
-    travelsLink.addEventListener('click', function(event) {
+    travelsLink.addEventListener('click', function (event) {
       event.preventDefault();
       showView(travelsView);
       setActiveNav('travels');
@@ -627,7 +600,7 @@
       window.scrollTo({ top: 0, behavior: 'smooth' });
     });
 
-    coloradoLink.addEventListener('click', function(event) {
+    coloradoLink.addEventListener('click', function (event) {
       event.preventDefault();
       showView(coloradoView);
       setActiveNav('colorado');
@@ -635,7 +608,7 @@
       window.scrollTo({ top: 0, behavior: 'smooth' });
     });
 
-    backLink.addEventListener('click', function(event) {
+    backLink.addEventListener('click', function (event) {
       event.preventDefault();
       closeLightbox();
       const section = galleries[currentGalleryKey].section;
@@ -651,8 +624,8 @@
       window.scrollTo({ top: 0, behavior: 'smooth' });
     });
 
-    document.querySelectorAll('.back-to-top').forEach(function(button) {
-      button.addEventListener('click', function(event) {
+    document.querySelectorAll('.back-to-top').forEach(function (button) {
+      button.addEventListener('click', function (event) {
         event.preventDefault();
         window.scrollTo({ top: 0, behavior: 'smooth' });
       });
@@ -662,13 +635,13 @@
     nextButton.addEventListener('click', showNextPhoto);
     prevButton.addEventListener('click', showPrevPhoto);
 
-    lightbox.addEventListener('click', function(event) {
+    lightbox.addEventListener('click', function (event) {
       if (event.target === lightbox) {
         closeLightbox();
       }
     });
 
-    document.addEventListener('keydown', function(event) {
+    document.addEventListener('keydown', function (event) {
       if (!lightbox.classList.contains('open')) return;
 
       if (event.key === 'Escape') {
