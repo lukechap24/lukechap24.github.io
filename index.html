@@ -31,14 +31,17 @@
       margin: 0;
     }
 
-    nav a {
-      margin-left: 15px;
+    nav a, .gallery-link, .back-link {
       text-decoration: none;
       color: #111;
       font-size: 14px;
     }
 
-    nav a:hover {
+    nav a {
+      margin-left: 15px;
+    }
+
+    nav a:hover, .gallery-link:hover, .back-link:hover {
       text-decoration: underline;
     }
 
@@ -53,37 +56,101 @@
       gap: 10px;
     }
 
-    .gallery-link {
-      text-decoration: none;
-      color: #111;
-      font-size: 15px;
+    .view {
+      display: none;
     }
 
-    .gallery-link:hover {
-      text-decoration: underline;
+    .view.active {
+      display: block;
     }
 
+    .thumb-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-top: 20px;
+    }
+
+    .thumb-grid img {
+      width: 100%;
+      display: block;
+    }
+
+    .gallery-title {
+      font-size: 16px;
+      margin: 20px 0 10px;
+    }
+
+    @media (max-width: 700px) {
+      .thumb-grid {
+        grid-template-columns: 1fr;
+      }
+    }
   </style>
 </head>
 <body>
   <div class="page">
-
     <header>
       <h1>Luke Chapman</h1>
       <nav>
-        <a href="#">Travels</a>
+        <a href="#" id="home-link">Travels</a>
         <a href="#">Moments</a>
       </nav>
     </header>
 
-    <div class="section-title">Travels</div>
+    <section id="home-view" class="view active">
+      <div class="section-title">Travels</div>
+      <div class="gallery-list">
+        <a class="gallery-link" href="#" id="patagonia-link">Patagonia - February, 2026</a>
+        <a class="gallery-link" href="#">Japan - October, 2025</a>
+        <a class="gallery-link" href="#">Iceland - June, 2025</a>
+      </div>
+    </section>
 
-    <div class="gallery-list">
-      <a class="gallery-link" href="#">Patagonia - February, 2026</a>
-      <a class="gallery-link" href="#">Japan - October, 2025</a>
-      <a class="gallery-link" href="#">Iceland - June, 2025</a>
-    </div>
+    <section id="gallery-view" class="view">
+      <a class="back-link" href="#" id="back-link">← Back</a>
+      <div class="gallery-title">Patagonia - February, 2026</div>
 
+      <div class="thumb-grid">
+        <img src="https://res.cloudinary.com/demo/image/upload/w_800/sample.jpg" alt="Photo 1">
+        <img src="https://res.cloudinary.com/demo/image/upload/w_800/samples/landscapes/nature-mountains.jpg" alt="Photo 2">
+        <img src="https://res.cloudinary.com/demo/image/upload/w_800/samples/animals/reindeer.jpg" alt="Photo 3">
+      </div>
+    </section>
   </div>
+
+  <script>
+    const homeView = document.getElementById('home-view');
+    const galleryView = document.getElementById('gallery-view');
+
+    const patagoniaLink = document.getElementById('patagonia-link');
+    const backLink = document.getElementById('back-link');
+    const homeLink = document.getElementById('home-link');
+
+    function showHome() {
+      homeView.classList.add('active');
+      galleryView.classList.remove('active');
+    }
+
+    function showGallery() {
+      homeView.classList.remove('active');
+      galleryView.classList.add('active');
+    }
+
+    patagoniaLink.addEventListener('click', function(event) {
+      event.preventDefault();
+      showGallery();
+    });
+
+    backLink.addEventListener('click', function(event) {
+      event.preventDefault();
+      showHome();
+    });
+
+    homeLink.addEventListener('click', function(event) {
+      event.preventDefault();
+      showHome();
+    });
+  </script>
 </body>
 </html>
