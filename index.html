@@ -19,21 +19,71 @@
       padding: 30px 20px;
     }
 
-    h1 {
-      font-size: 28px;
-      margin-bottom: 10px;
+    header {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 40px;
     }
 
-    p {
+    h1 {
       font-size: 16px;
-      color: #666;
+      font-weight: 600;
+      margin: 0;
     }
+
+    nav a {
+      margin-left: 15px;
+      text-decoration: none;
+      color: #111;
+      font-size: 14px;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    .section-title {
+      font-size: 14px;
+      margin-bottom: 15px;
+    }
+
+    .gallery-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .gallery-link {
+      text-decoration: none;
+      color: #111;
+      font-size: 15px;
+    }
+
+    .gallery-link:hover {
+      text-decoration: underline;
+    }
+
   </style>
 </head>
 <body>
   <div class="page">
-    <h1>Luke Chapman Photography</h1>
-    <p>This is my photography site.</p>
+
+    <header>
+      <h1>Luke Chapman</h1>
+      <nav>
+        <a href="#">Travels</a>
+        <a href="#">Moments</a>
+      </nav>
+    </header>
+
+    <div class="section-title">Travels</div>
+
+    <div class="gallery-list">
+      <a class="gallery-link" href="#">Patagonia - February, 2026</a>
+      <a class="gallery-link" href="#">Japan - October, 2025</a>
+      <a class="gallery-link" href="#">Iceland - June, 2025</a>
+    </div>
+
   </div>
 </body>
 </html>
