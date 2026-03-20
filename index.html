@@ -14,14 +14,15 @@
     }
 
     .page {
-      max-width: 900px;
+      max-width: 950px;
       margin: 0 auto;
-      padding: 30px 20px;
+      padding: 30px 20px 50px;
     }
 
     header {
       display: flex;
       justify-content: space-between;
+      align-items: baseline;
       margin-bottom: 40px;
     }
 
@@ -31,7 +32,9 @@
       margin: 0;
     }
 
-    nav a, .gallery-link, .back-link {
+    nav a,
+    .gallery-link,
+    .back-link {
       text-decoration: none;
       color: #111;
       font-size: 14px;
@@ -41,7 +44,9 @@
       margin-left: 15px;
     }
 
-    nav a:hover, .gallery-link:hover, .back-link:hover {
+    nav a:hover,
+    .gallery-link:hover,
+    .back-link:hover {
       text-decoration: underline;
     }
 
@@ -64,26 +69,52 @@
       display: block;
     }
 
+    .gallery-title {
+      font-size: 16px;
+      font-weight: 600;
+      margin: 18px 0 4px;
+    }
+
+    .gallery-subtitle {
+      font-size: 14px;
+      color: #666;
+      margin-bottom: 20px;
+    }
+
     .thumb-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 10px;
-      margin-top: 20px;
     }
 
-    .thumb-grid img {
-      width: 100%;
-      display: block;
+    .thumb {
+      aspect-ratio: 4 / 5;
+      background: #efefef;
+      border: 1px solid #e4e4e4;
     }
 
-    .gallery-title {
-      font-size: 16px;
-      margin: 20px 0 10px;
+    .thumb.large {
+      grid-column: span 2;
+      aspect-ratio: 8 / 5;
+    }
+
+    .about {
+      margin-top: 50px;
+      padding-top: 15px;
+      border-top: 1px solid #eaeaea;
+      max-width: 600px;
+      font-size: 14px;
+      color: #666;
     }
 
     @media (max-width: 700px) {
       .thumb-grid {
         grid-template-columns: 1fr;
+      }
+
+      .thumb.large {
+        grid-column: span 1;
+        aspect-ratio: 4 / 5;
       }
     }
   </style>
@@ -105,16 +136,24 @@
         <a class="gallery-link" href="#">Japan - October, 2025</a>
         <a class="gallery-link" href="#">Iceland - June, 2025</a>
       </div>
+
+      <div class="about">
+        Minimal travel and portrait photography.
+      </div>
     </section>
 
     <section id="gallery-view" class="view">
       <a class="back-link" href="#" id="back-link">← Back</a>
       <div class="gallery-title">Patagonia - February, 2026</div>
+      <div class="gallery-subtitle">8 photographs</div>
 
       <div class="thumb-grid">
-        <img src="https://res.cloudinary.com/demo/image/upload/w_800/sample.jpg" alt="Photo 1">
-        <img src="https://res.cloudinary.com/demo/image/upload/w_800/samples/landscapes/nature-mountains.jpg" alt="Photo 2">
-        <img src="https://res.cloudinary.com/demo/image/upload/w_800/samples/animals/reindeer.jpg" alt="Photo 3">
+        <div class="thumb large"></div>
+        <div class="thumb"></div>
+        <div class="thumb"></div>
+        <div class="thumb"></div>
+        <div class="thumb large"></div>
+        <div class="thumb"></div>
       </div>
     </section>
   </div>
