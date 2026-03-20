@@ -19,17 +19,60 @@
 
     .folder { text-align: center; cursor: pointer; }
 
-    .folder img { width: 100%; aspect-ratio: 4/3; object-fit: cover; }
+    .folder img {
+      width: 100%;
+      aspect-ratio: 4/3;
+      object-fit: cover;
+      transition: opacity 0.2s ease;
+    }
+
+    .folder:hover img {
+      opacity: 0.7;
+    }
 
     .folder-title { margin-top: 10px; font-size: 15px; }
     .folder-date { font-size: 12px; color: #999; margin-top: 4px; }
 
-    .about { margin-top: 60px; padding-top: 20px; border-top: 1px solid #eee; color: #777; font-size: 14px; text-align: left; max-width: 600px; }
+    .about { margin-top: 60px; padding-top: 20px; border-top: 1px solid #eee; color: #777; font-size: 14px; max-width: 600px; }
 
     .view { display: none; }
     .view.active { display: block; }
 
-    @media(max-width:800px){ .grid{grid-template-columns:1fr;} }
+    /* GALLERY VIEW */
+    .thumb-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top:20px; }
+
+    .thumb { aspect-ratio: 4/5; overflow: hidden; cursor: pointer; }
+
+    .thumb img { width: 100%; height: 100%; object-fit: cover; }
+
+    .lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(255,255,255,0.96);
+      z-index: 1000;
+      padding: 20px;
+    }
+
+    .lightbox.open { display: flex; flex-direction: column; }
+
+    .lightbox-content {
+      flex:1;
+      display:grid;
+      grid-template-columns:60px 1fr 60px;
+      align-items:center;
+    }
+
+    .lightbox-image {
+      max-width:100%;
+      max-height:75vh;
+      opacity:1;
+      transition:opacity .25s ease;
+    }
+
+    .lightbox-image.fade-out { opacity:0; }
+
+    @media(max-width:800px){ .grid{grid-template-columns:1fr;} .thumb-grid{grid-template-columns:1fr;} }
   </style>
 </head>
 <body>
@@ -91,26 +134,87 @@
   <div class="about">Minimal travel and portrait photography.</div>
 </section>
 
+<!-- GALLERY -->
+<section id="gallery-view" class="view">
+  <a href="#" id="back-link">← Back</a>
+  <div class="thumb-grid" id="thumb-grid"></div>
+</section>
+
+</div>
+
+<div class="lightbox" id="lightbox">
+  <div class="lightbox-content">
+    <button id="prev">‹</button>
+    <img id="lightbox-img" class="lightbox-image">
+    <button id="next">›</button>
+  </div>
 </div>
 
 <script>
-const travelsView = document.getElementById('travels-view');
-const coloradoView = document.getElementById('colorado-view');
+const travelsView=document.getElementById('travels-view');
+const coloradoView=document.getElementById('colorado-view');
+const galleryView=document.getElementById('gallery-view');
 
-const travelsLink = document.getElementById('travels-link');
-const coloradoLink = document.getElementById('colorado-link');
+const travelsLink=document.getElementById('travels-link');
+const coloradoLink=document.getElementById('colorado-link');
+const patagoniaLink=document.getElementById('patagonia-link');
+const backLink=document.getElementById('back-link');
+
+const thumbGrid=document.getElementById('thumb-grid');
+const lightbox=document.getElementById('lightbox');
+const lightboxImg=document.getElementById('lightbox-img');
+
+const photos=[
+'https://res.cloudinary.com/demo/image/upload/w_1600/sample.jpg',
+'https://res.cloudinary.com/demo/image/upload/w_1600/samples/landscapes/nature-mountains.jpg',
+'https://res.cloudinary.com/demo/image/upload/w_1600/samples/animals/reindeer.jpg',
+'https://res.cloudinary.com/demo/image/upload/w_1600/samples/people/smiling-man.jpg',
+'https://res.cloudinary.com/demo/image/upload/w_1600/samples/sheep.jpg',
+'https://res.cloudinary.com/demo/image/upload/w_1600/samples/landscapes/beach-boat.jpg'
+];
+
+let index=0;
 
 function show(view){
-  travelsView.classList.remove('active');
-  coloradoView.classList.remove('active');
-  view.classList.add('active');
-
-  travelsLink.classList.remove('active');
-  coloradoLink.classList.remove('active');
-
-  if(view===travelsView) travelsLink.classList.add('active');
-  else coloradoLink.classList.add('active');
+travelsView.classList.remove('active');
+coloradoView.classList.remove('active');
+galleryView.classList.remove('active');
+view.classList.add('active');
 }
+
+function render(){
+thumbGrid.innerHTML='';
+photos.forEach((p,i)=>{
+const d=document.createElement('div');
+d.className='thumb';
+const img=document.createElement('img');
+img.src=p;
+d.appendChild(img);
+d.onclick=()=>open(i);
+thumbGrid.appendChild(d);
+});
+}
+
+function open(i){
+index=i;
+lightboxImg.src=photos[i];
+lightbox.classList.add('open');
+}
+
+function change(i){
+lightboxImg.classList.add('fade-out');
+setTimeout(()=>{
+index=i;
+lightboxImg.src=photos[i];
+lightboxImg.onload=()=>lightboxImg.classList.remove('fade-out');
+},150);
+}
+
+document.getElementById('next').onclick=()=>change((index+1)%photos.length);
+document.getElementById('prev').onclick=()=>change((index-1+photos.length)%photos.length);
+
+patagoniaLink.onclick=(e)=>{e.preventDefault();show(galleryView);render();};
+backLink.onclick=(e)=>{e.preventDefault();show(travelsView);};
 
 travelsLink.onclick=(e)=>{e.preventDefault();show(travelsView);};
 coloradoLink.onclick=(e)=>{e.preventDefault();show(coloradoView);};
