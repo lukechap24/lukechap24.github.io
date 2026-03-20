@@ -10,40 +10,74 @@
     .page { max-width: 1000px; margin: 0 auto; padding: 30px 20px 60px; }
 
     header { text-align: center; margin-bottom: 40px; }
-    h1 { font-size: 20px; font-weight: 600; margin-bottom: 10px; }
+    h1 { font-size: 20px; font-weight: 600; margin: 0 0 10px; }
 
     nav a { margin: 0 10px; text-decoration: none; color: #999; }
     nav a.active { color: #111; }
 
     .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
-
     .folder { text-align: center; cursor: pointer; }
 
     .folder img {
       width: 100%;
-      aspect-ratio: 4/3;
+      aspect-ratio: 4 / 3;
       object-fit: cover;
+      display: block;
       transition: opacity 0.2s ease;
     }
 
-    .folder:hover img {
-      opacity: 0.7;
-    }
+    .folder:hover img { opacity: 0.7; }
 
-    .folder-title { margin-top: 10px; font-size: 15px; }
+    .folder-title { margin-top: 10px; font-size: 15px; line-height: 1.35; }
     .folder-date { font-size: 12px; color: #999; margin-top: 4px; }
 
-    .about { margin-top: 60px; padding-top: 20px; border-top: 1px solid #eee; color: #777; font-size: 14px; max-width: 600px; }
+    .about {
+      margin-top: 60px;
+      padding-top: 20px;
+      border-top: 1px solid #eee;
+      color: #777;
+      font-size: 14px;
+      max-width: 600px;
+    }
 
     .view { display: none; }
     .view.active { display: block; }
 
-    /* GALLERY VIEW */
-    .thumb-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top:20px; }
+    .back-link {
+      display: inline-block;
+      margin-bottom: 16px;
+      text-decoration: none;
+      color: #111;
+      font-size: 14px;
+    }
 
-    .thumb { aspect-ratio: 4/5; overflow: hidden; cursor: pointer; }
+    .gallery-heading { margin-bottom: 18px; }
+    .gallery-title { font-size: 16px; font-weight: 600; margin: 0 0 4px; }
+    .gallery-subtitle { font-size: 13px; color: #999; }
 
-    .thumb img { width: 100%; height: 100%; object-fit: cover; }
+    .thumb-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-top: 20px;
+    }
+
+    .thumb {
+      aspect-ratio: 4 / 5;
+      overflow: hidden;
+      cursor: pointer;
+      background: #efefef;
+    }
+
+    .thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: opacity 0.2s ease;
+    }
+
+    .thumb:hover img { opacity: 0.8; }
 
     .lightbox {
       display: none;
@@ -56,168 +90,384 @@
 
     .lightbox.open { display: flex; flex-direction: column; }
 
+    .lightbox-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+      font-size: 14px;
+    }
+
+    .lightbox-close,
+    .lightbox-arrow {
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: #666;
+    }
+
+    .lightbox-close { font-size: 14px; color: #111; }
+
     .lightbox-content {
-      flex:1;
-      display:grid;
-      grid-template-columns:60px 1fr 60px;
-      align-items:center;
+      flex: 1;
+      display: grid;
+      grid-template-columns: 60px minmax(0, 1fr) 60px;
+      align-items: center;
+      gap: 10px;
+      max-width: 1200px;
+      width: 100%;
+      margin: 0 auto;
+    }
+
+    .lightbox-arrow { font-size: 36px; }
+
+    .lightbox-image-wrap {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      min-height: 0;
+    }
+
+    .lightbox-image-wrap {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 0;
     }
 
     .lightbox-image {
-      max-width:100%;
-      max-height:75vh;
-      opacity:1;
-      transition:opacity .25s ease;
+      max-width: 100%;
+      max-height: 75vh;
+      opacity: 1;
+      transition: opacity .25s ease;
+      display: block;
     }
 
-    .lightbox-image.fade-out { opacity:0; }
+    .lightbox-image.fade-out { opacity: 0; }
 
-    @media(max-width:800px){ .grid{grid-template-columns:1fr;} .thumb-grid{grid-template-columns:1fr;} }
+    @media (max-width: 800px) {
+      .grid { grid-template-columns: 1fr; }
+      .thumb-grid { grid-template-columns: 1fr; }
+      .lightbox-content { grid-template-columns: 40px 1fr 40px; }
+      .lightbox-arrow { font-size: 28px; }
+    }
   </style>
 </head>
 <body>
 <div class="page">
 
-<header>
-  <h1>Luke Chapman</h1>
-  <nav>
-    <a href="#" id="travels-link" class="active">Travels</a>
-    <a href="#" id="colorado-link">Colorado</a>
-  </nav>
-</header>
+  <header>
+    <h1>Luke Chapman</h1>
+    <nav>
+      <a href="#" id="travels-link" class="active">Travels</a>
+      <a href="#" id="colorado-link">Colorado</a>
+    </nav>
+  </header>
 
-<!-- TRAVELS -->
-<section id="travels-view" class="view active">
-  <div class="grid">
+  <section id="travels-view" class="view active">
+    <div class="grid">
+      <div class="folder" data-gallery="patagonia">
+        <img src="https://res.cloudinary.com/demo/image/upload/w_800/sample.jpg" alt="Patagonia thumbnail">
+        <div class="folder-title">Patagonia</div>
+        <div class="folder-date">February, 2026</div>
+      </div>
 
-    <div class="folder" id="patagonia-link">
-      <img src="https://res.cloudinary.com/demo/image/upload/w_800/sample.jpg">
-      <div class="folder-title">Patagonia</div>
-      <div class="folder-date">February, 2026</div>
+      <div class="folder" data-gallery="japan">
+        <img src="https://res.cloudinary.com/demo/image/upload/w_800/samples/landscapes/nature-mountains.jpg" alt="Japan thumbnail">
+        <div class="folder-title">Japan</div>
+        <div class="folder-date">October, 2025</div>
+      </div>
+
+      <div class="folder" data-gallery="iceland">
+        <img src="https://res.cloudinary.com/demo/image/upload/w_800/samples/animals/reindeer.jpg" alt="Iceland thumbnail">
+        <div class="folder-title">Iceland</div>
+        <div class="folder-date">June, 2025</div>
+      </div>
     </div>
 
-    <div class="folder">
-      <img src="https://res.cloudinary.com/demo/image/upload/w_800/samples/landscapes/nature-mountains.jpg">
-      <div class="folder-title">Japan</div>
-      <div class="folder-date">October, 2025</div>
+    <div class="about">Minimal travel and portrait photography.</div>
+  </section>
+
+  <section id="colorado-view" class="view">
+    <div class="grid">
+      <div class="folder" data-gallery="crested-butte">
+        <img src="https://res.cloudinary.com/demo/image/upload/w_800/samples/people/smiling-man.jpg" alt="Crested Butte thumbnail">
+        <div class="folder-title">Crested Butte</div>
+        <div class="folder-date">September, 2025</div>
+      </div>
+
+      <div class="folder" data-gallery="silverthorne">
+        <img src="https://res.cloudinary.com/demo/image/upload/w_800/samples/sheep.jpg" alt="Silverthorne thumbnail">
+        <div class="folder-title">Silverthorne</div>
+        <div class="folder-date">July, 2025</div>
+      </div>
     </div>
 
-    <div class="folder">
-      <img src="https://res.cloudinary.com/demo/image/upload/w_800/samples/animals/reindeer.jpg">
-      <div class="folder-title">Iceland</div>
-      <div class="folder-date">June, 2025</div>
+    <div class="about">Minimal travel and portrait photography.</div>
+  </section>
+
+  <section id="gallery-view" class="view">
+    <a href="#" id="back-link" class="back-link">← Back</a>
+    <div class="gallery-heading">
+      <div class="gallery-title" id="gallery-title"></div>
+      <div class="gallery-subtitle" id="gallery-subtitle"></div>
     </div>
-
-  </div>
-
-  <div class="about">Minimal travel and portrait photography.</div>
-</section>
-
-<!-- COLORADO -->
-<section id="colorado-view" class="view">
-  <div class="grid">
-
-    <div class="folder">
-      <img src="https://res.cloudinary.com/demo/image/upload/w_800/samples/people/smiling-man.jpg">
-      <div class="folder-title">Crested Butte</div>
-      <div class="folder-date">September, 2025</div>
-    </div>
-
-    <div class="folder">
-      <img src="https://res.cloudinary.com/demo/image/upload/w_800/samples/sheep.jpg">
-      <div class="folder-title">Silverthorne</div>
-      <div class="folder-date">July, 2025</div>
-    </div>
-
-  </div>
-
-  <div class="about">Minimal travel and portrait photography.</div>
-</section>
-
-<!-- GALLERY -->
-<section id="gallery-view" class="view">
-  <a href="#" id="back-link">← Back</a>
-  <div class="thumb-grid" id="thumb-grid"></div>
-</section>
+    <div class="thumb-grid" id="thumb-grid"></div>
+  </section>
 
 </div>
 
 <div class="lightbox" id="lightbox">
+  <div class="lightbox-top">
+    <div id="lightbox-title">Gallery</div>
+    <button id="close-lightbox" class="lightbox-close" aria-label="Close lightbox">✕</button>
+  </div>
   <div class="lightbox-content">
-    <button id="prev">‹</button>
-    <img id="lightbox-img" class="lightbox-image">
-    <button id="next">›</button>
+    <button id="prev" class="lightbox-arrow">‹</button>
+    <div class="lightbox-image-wrap">
+      <img id="lightbox-img" class="lightbox-image" alt="">
+    </div>
+    <button id="next" class="lightbox-arrow">›</button>
   </div>
 </div>
 
 <script>
-const travelsView=document.getElementById('travels-view');
-const coloradoView=document.getElementById('colorado-view');
-const galleryView=document.getElementById('gallery-view');
+  const travelsView = document.getElementById('travels-view');
+  const coloradoView = document.getElementById('colorado-view');
+  const galleryView = document.getElementById('gallery-view');
 
-const travelsLink=document.getElementById('travels-link');
-const coloradoLink=document.getElementById('colorado-link');
-const patagoniaLink=document.getElementById('patagonia-link');
-const backLink=document.getElementById('back-link');
+  const travelsLink = document.getElementById('travels-link');
+  const coloradoLink = document.getElementById('colorado-link');
+  const backLink = document.getElementById('back-link');
 
-const thumbGrid=document.getElementById('thumb-grid');
-const lightbox=document.getElementById('lightbox');
-const lightboxImg=document.getElementById('lightbox-img');
+  const galleryTitle = document.getElementById('gallery-title');
+  const gallerySubtitle = document.getElementById('gallery-subtitle');
+  const thumbGrid = document.getElementById('thumb-grid');
 
-const photos=[
-'https://res.cloudinary.com/demo/image/upload/w_1600/sample.jpg',
-'https://res.cloudinary.com/demo/image/upload/w_1600/samples/landscapes/nature-mountains.jpg',
-'https://res.cloudinary.com/demo/image/upload/w_1600/samples/animals/reindeer.jpg',
-'https://res.cloudinary.com/demo/image/upload/w_1600/samples/people/smiling-man.jpg',
-'https://res.cloudinary.com/demo/image/upload/w_1600/samples/sheep.jpg',
-'https://res.cloudinary.com/demo/image/upload/w_1600/samples/landscapes/beach-boat.jpg'
-];
+  const lightbox = document.getElementById('lightbox');
+  const lightboxTitle = document.getElementById('lightbox-title');
+  const lightboxImg = document.getElementById('lightbox-img');
+  const closeLightboxButton = document.getElementById('close-lightbox');
+  const prevButton = document.getElementById('prev');
+  const nextButton = document.getElementById('next');
 
-let index=0;
+  const galleries = {
+    'patagonia': {
+      title: 'Patagonia',
+      date: 'February, 2026',
+      section: 'travels',
+      photos: [
+        'https://res.cloudinary.com/demo/image/upload/w_1600/sample.jpg',
+        'https://res.cloudinary.com/demo/image/upload/w_1600/samples/landscapes/nature-mountains.jpg',
+        'https://res.cloudinary.com/demo/image/upload/w_1600/samples/animals/reindeer.jpg',
+        'https://res.cloudinary.com/demo/image/upload/w_1600/samples/people/smiling-man.jpg',
+        'https://res.cloudinary.com/demo/image/upload/w_1600/samples/sheep.jpg',
+        'https://res.cloudinary.com/demo/image/upload/w_1600/samples/landscapes/beach-boat.jpg'
+      ]
+    },
+    'japan': {
+      title: 'Japan',
+      date: 'October, 2025',
+      section: 'travels',
+      photos: [
+        'https://res.cloudinary.com/demo/image/upload/w_1600/samples/landscapes/nature-mountains.jpg',
+        'https://res.cloudinary.com/demo/image/upload/w_1600/samples/landscapes/girl-urban-view.jpg',
+        'https://res.cloudinary.com/demo/image/upload/w_1600/samples/people/jazz.jpg',
+        'https://res.cloudinary.com/demo/image/upload/w_1600/samples/food/spices.jpg',
+        'https://res.cloudinary.com/demo/image/upload/w_1600/samples/animals/cat.jpg',
+        'https://res.cloudinary.com/demo/image/upload/w_1600/samples/ecommerce/analog-classic.jpg'
+      ]
+    },
+    'iceland': {
+      title: 'Iceland',
+      date: 'June, 2025',
+      section: 'travels',
+      photos: [
+        'https://res.cloudinary.com/demo/image/upload/w_1600/samples/animals/reindeer.jpg',
+        'https://res.cloudinary.com/demo/image/upload/w_1600/samples/sheep.jpg',
+        'https://res.cloudinary.com/demo/image/upload/w_1600/sample.jpg',
+        'https://res.cloudinary.com/demo/image/upload/w_1600/samples/landscapes/beach-boat.jpg',
+        'https://res.cloudinary.com/demo/image/upload/w_1600/samples/landscapes/nature-mountains.jpg',
+        'https://res.cloudinary.com/demo/image/upload/w_1600/samples/people/bicycle.jpg'
+      ]
+    },
+    'crested-butte': {
+      title: 'Crested Butte',
+      date: 'September, 2025',
+      section: 'colorado',
+      photos: [
+        'https://res.cloudinary.com/demo/image/upload/w_1600/samples/people/smiling-man.jpg',
+        'https://res.cloudinary.com/demo/image/upload/w_1600/samples/people/jazz.jpg',
+        'https://res.cloudinary.com/demo/image/upload/w_1600/samples/people/bicycle.jpg',
+        'https://res.cloudinary.com/demo/image/upload/w_1600/samples/people/kitchen-bar.jpg',
+        'https://res.cloudinary.com/demo/image/upload/w_1600/samples/landscapes/beach-boat.jpg',
+        'https://res.cloudinary.com/demo/image/upload/w_1600/samples/landscapes/girl-urban-view.jpg'
+      ]
+    },
+    'silverthorne': {
+      title: 'Silverthorne',
+      date: 'July, 2025',
+      section: 'colorado',
+      photos: [
+        'https://res.cloudinary.com/demo/image/upload/w_1600/samples/sheep.jpg',
+        'https://res.cloudinary.com/demo/image/upload/w_1600/samples/animals/cat.jpg',
+        'https://res.cloudinary.com/demo/image/upload/w_1600/samples/animals/three-dogs.jpg',
+        'https://res.cloudinary.com/demo/image/upload/w_1600/samples/animals/reindeer.jpg',
+        'https://res.cloudinary.com/demo/image/upload/w_1600/samples/landscapes/nature-mountains.jpg',
+        'https://res.cloudinary.com/demo/image/upload/w_1600/sample.jpg'
+      ]
+    }
+  };
 
-function show(view){
-travelsView.classList.remove('active');
-coloradoView.classList.remove('active');
-galleryView.classList.remove('active');
-view.classList.add('active');
-}
+  let currentGalleryKey = null;
+  let currentPhotoIndex = 0;
+  let currentPhotos = [];
+  let isTransitioning = false;
 
-function render(){
-thumbGrid.innerHTML='';
-photos.forEach((p,i)=>{
-const d=document.createElement('div');
-d.className='thumb';
-const img=document.createElement('img');
-img.src=p;
-d.appendChild(img);
-d.onclick=()=>open(i);
-thumbGrid.appendChild(d);
-});
-}
+  function showView(view) {
+    travelsView.classList.remove('active');
+    coloradoView.classList.remove('active');
+    galleryView.classList.remove('active');
+    view.classList.add('active');
+  }
 
-function open(i){
-index=i;
-lightboxImg.src=photos[i];
-lightbox.classList.add('open');
-}
+  function setActiveNav(section) {
+    travelsLink.classList.remove('active');
+    coloradoLink.classList.remove('active');
 
-function change(i){
-lightboxImg.classList.add('fade-out');
-setTimeout(()=>{
-index=i;
-lightboxImg.src=photos[i];
-lightboxImg.onload=()=>lightboxImg.classList.remove('fade-out');
-},150);
-}
+    if (section === 'travels') {
+      travelsLink.classList.add('active');
+    }
 
-document.getElementById('next').onclick=()=>change((index+1)%photos.length);
-document.getElementById('prev').onclick=()=>change((index-1+photos.length)%photos.length);
+    if (section === 'colorado') {
+      coloradoLink.classList.add('active');
+    }
+  }
 
-patagoniaLink.onclick=(e)=>{e.preventDefault();show(galleryView);render();};
-backLink.onclick=(e)=>{e.preventDefault();show(travelsView);};
+  function renderGallery(galleryKey) {
+    const gallery = galleries[galleryKey];
+    currentGalleryKey = galleryKey;
+    currentPhotos = gallery.photos;
 
-travelsLink.onclick=(e)=>{e.preventDefault();show(travelsView);};
-coloradoLink.onclick=(e)=>{e.preventDefault();show(coloradoView);};
+    galleryTitle.textContent = gallery.title;
+    gallerySubtitle.textContent = `${gallery.date} · ${gallery.photos.length} photographs`;
+    lightboxTitle.textContent = gallery.title;
+
+    thumbGrid.innerHTML = '';
+
+    gallery.photos.forEach((photoUrl, index) => {
+      const thumb = document.createElement('div');
+      thumb.className = 'thumb';
+
+      const img = document.createElement('img');
+      img.src = photoUrl;
+      img.alt = `${gallery.title} photo`;
+
+      thumb.appendChild(img);
+      thumb.addEventListener('click', function() {
+        openLightbox(index);
+      });
+
+      thumbGrid.appendChild(thumb);
+    });
+
+    showView(galleryView);
+    setActiveNav(gallery.section);
+  }
+
+  function openLightbox(index) {
+    currentPhotoIndex = index;
+    lightboxImg.src = currentPhotos[index];
+    lightboxImg.alt = galleries[currentGalleryKey].title + ' photo';
+    lightbox.classList.add('open');
+  }
+
+  function closeLightbox() {
+    lightbox.classList.remove('open');
+  }
+
+  function changePhoto(newIndex) {
+    if (isTransitioning) return;
+
+    isTransitioning = true;
+    lightboxImg.classList.add('fade-out');
+
+    setTimeout(function() {
+      currentPhotoIndex = newIndex;
+      lightboxImg.src = currentPhotos[newIndex];
+      lightboxImg.onload = function() {
+        lightboxImg.classList.remove('fade-out');
+        isTransitioning = false;
+        lightboxImg.onload = null;
+      };
+    }, 150);
+  }
+
+  function showNextPhoto() {
+    changePhoto((currentPhotoIndex + 1) % currentPhotos.length);
+  }
+
+  function showPrevPhoto() {
+    changePhoto((currentPhotoIndex - 1 + currentPhotos.length) % currentPhotos.length);
+  }
+
+  document.querySelectorAll('.folder').forEach(function(folder) {
+    folder.addEventListener('click', function() {
+      renderGallery(this.dataset.gallery);
+    });
+  });
+
+  travelsLink.addEventListener('click', function(event) {
+    event.preventDefault();
+    showView(travelsView);
+    setActiveNav('travels');
+  });
+
+  coloradoLink.addEventListener('click', function(event) {
+    event.preventDefault();
+    showView(coloradoView);
+    setActiveNav('colorado');
+  });
+
+  backLink.addEventListener('click', function(event) {
+    event.preventDefault();
+    const section = galleries[currentGalleryKey].section;
+    closeLightbox();
+    if (section === 'travels') {
+      showView(travelsView);
+      setActiveNav('travels');
+    } else {
+      showView(coloradoView);
+      setActiveNav('colorado');
+    }
+  });
+
+  closeLightboxButton.addEventListener('click', closeLightbox);
+  nextButton.addEventListener('click', showNextPhoto);
+  prevButton.addEventListener('click', showPrevPhoto);
+
+  lightbox.addEventListener('click', function(event) {
+    if (event.target === lightbox) {
+      closeLightbox();
+    }
+  });
+
+  document.addEventListener('keydown', function(event) {
+    if (!lightbox.classList.contains('open')) return;
+
+    if (event.key === 'Escape') {
+      closeLightbox();
+    }
+
+    if (event.key === 'ArrowRight') {
+      showNextPhoto();
+    }
+
+    if (event.key === 'ArrowLeft') {
+      showPrevPhoto();
+    }
+  });
 </script>
 
 </body>
