@@ -74,7 +74,7 @@ const galleries = {
     ]
   },
 
-  silverthorne: {
+  "great-sand-dunes": {
     title: "Great Sand Dunes",
     date: "August, 2023",
     section: "colorado",
