@@ -10,12 +10,11 @@
 </head>
 <body id="top">
   <div class="page">
-
-   <header>
-    <h1>
-      <a href="travels.html" class="home-link">Luke Chapman</a>
-    </h1>
-    <nav>
+    <header>
+      <h1>
+        <a href="travels.html" class="home-link">Luke Chapman</a>
+      </h1>
+      <nav>
         <a href="travels.html" id="travels-link">Travels</a>
         <a href="colorado.html" id="colorado-link">Colorado</a>
       </nav>
@@ -31,41 +30,35 @@
 
       <div class="thumb-grid" id="thumb-grid"></div>
 
-<div class="bottom-meta">
-  <a href="#top" class="back-to-top">Back to top ↑</a>
+      <div class="bottom-meta">
+        <a href="#top" class="back-to-top">Back to top ↑</a>
+        <div class="full-divider"></div>
 
-  <div class="full-divider"></div>
-
-  <div class="footer">
-    <div class="footer-left">Contact:</div>
-
-    <div class="footer-right">
-      <a href="https://instagram.com/_l.chap" target="_blank" class="contact-link">
-        Instagram
-      </a>
-
-      <a href="mailto:lukeallenchapman@gmail.com" class="contact-link">
-        Email
-      </a>
-    </div>
+        <div class="footer">
+          <div class="footer-left">Contact</div>
+          <div class="footer-right">
+            <a href="https://instagram.com/_l.chap" target="_blank" class="contact-link">Instagram</a>
+            <a href="mailto:lukeallenchapman@gmail.com" class="contact-link">Email</a>
+          </div>
+        </div>
+      </div>
+    </section>
   </div>
-</div>
 
-  <!-- LIGHTBOX -->
   <div class="lightbox" id="lightbox">
     <div class="lightbox-top">
       <div id="lightbox-title"></div>
-      <button id="close-lightbox" class="lightbox-close">✕</button>
+      <button id="close-lightbox" class="lightbox-close" aria-label="Close lightbox">✕</button>
     </div>
 
     <div class="lightbox-content">
-      <button id="prev" class="lightbox-arrow">‹</button>
+      <button id="prev" class="lightbox-arrow" aria-label="Previous image">‹</button>
 
       <div class="lightbox-image-wrap">
-        <img id="lightbox-img" class="lightbox-image">
+        <img id="lightbox-img" class="lightbox-image" alt="">
       </div>
 
-      <button id="next" class="lightbox-arrow">›</button>
+      <button id="next" class="lightbox-arrow" aria-label="Next image">›</button>
     </div>
   </div>
 
@@ -78,57 +71,80 @@
     }
 
     function makeThumb(url) {
-      return url.replace("/w_1600/", "/w_600,h_750,c_fill/");
+      return url.replace(
+        "/upload/",
+        "/upload/w_600,h_750,c_fill,q_auto,f_auto/"
+      );
+    }
+
+    function makeFull(url) {
+      return url.replace(
+        "/upload/",
+        "/upload/w_1600,q_auto,f_auto/"
+      );
     }
 
     const galleryKey = getGalleryKey();
     const gallery = galleries[galleryKey];
 
     if (!gallery) {
-      document.body.innerHTML = "Gallery not found";
+      document.body.innerHTML = "<p style='padding: 40px; font-family: Manrope, Arial, sans-serif;'>Gallery not found.</p>";
+      throw new Error("Gallery not found");
     }
 
+    document.title = `Luke Chapman Photography — ${gallery.title}`;
     document.getElementById("gallery-title").textContent = gallery.title;
     document.getElementById("gallery-subtitle").textContent =
       `${gallery.date} · ${gallery.photos.length} photographs`;
+    document.getElementById("lightbox-title").textContent = gallery.title;
 
-    const thumbGrid = document.getElementById("thumb-grid");
-
-    gallery.photos.forEach((photo, i) => {
-      const div = document.createElement("div");
-      div.className = "thumb";
-
-      const img = document.createElement("img");
-      img.src = makeThumb(photo);
-
-      div.appendChild(img);
-      div.onclick = () => openLightbox(i);
-
-      thumbGrid.appendChild(div);
-    });
-
-    // NAV HIGHLIGHT
     if (gallery.section === "travels") {
       document.getElementById("travels-link").classList.add("active");
     } else {
       document.getElementById("colorado-link").classList.add("active");
     }
 
-    // BACK LINK
-    document.getElementById("back-link").onclick = function(e) {
+    document.getElementById("back-link").addEventListener("click", function(e) {
       e.preventDefault();
       window.location.href = gallery.section + ".html";
-    };
+    });
 
-    // LIGHTBOX
+    const thumbGrid = document.getElementById("thumb-grid");
     const lightbox = document.getElementById("lightbox");
-    const imgEl = document.getElementById("lightbox-img");
+    const lightboxImg = document.getElementById("lightbox-img");
+    const closeLightboxButton = document.getElementById("close-lightbox");
+    const prevButton = document.getElementById("prev");
+    const nextButton = document.getElementById("next");
 
-    let index = 0;
+    let currentIndex = 0;
+    let isTransitioning = false;
 
-    function openLightbox(i) {
-      index = i;
-      imgEl.src = gallery.photos[i];
+    function renderThumbnails() {
+      thumbGrid.innerHTML = "";
+
+      gallery.photos.forEach((photoUrl, index) => {
+        const thumb = document.createElement("div");
+        thumb.className = "thumb";
+
+        const img = document.createElement("img");
+        img.src = makeThumb(photoUrl);
+        img.alt = `${gallery.title} photo ${index + 1}`;
+        img.loading = "lazy";
+        img.decoding = "async";
+
+        thumb.appendChild(img);
+        thumb.addEventListener("click", function() {
+          openLightbox(index);
+        });
+
+        thumbGrid.appendChild(thumb);
+      });
+    }
+
+    function openLightbox(index) {
+      currentIndex = index;
+      lightboxImg.src = makeFull(gallery.photos[index]);
+      lightboxImg.alt = `${gallery.title} photo ${index + 1}`;
       lightbox.classList.add("open");
     }
 
@@ -136,35 +152,67 @@
       lightbox.classList.remove("open");
     }
 
-    function next() {
-      index = (index + 1) % gallery.photos.length;
-      imgEl.src = gallery.photos[index];
+    function changePhoto(newIndex) {
+      if (isTransitioning) return;
+
+      isTransitioning = true;
+      lightboxImg.classList.add("fade-out");
+
+      setTimeout(function() {
+        currentIndex = newIndex;
+        lightboxImg.src = makeFull(gallery.photos[newIndex]);
+        lightboxImg.alt = `${gallery.title} photo ${newIndex + 1}`;
+
+        lightboxImg.onload = function() {
+          lightboxImg.classList.remove("fade-out");
+          isTransitioning = false;
+          lightboxImg.onload = null;
+        };
+      }, 150);
     }
 
-    function prev() {
-      index = (index - 1 + gallery.photos.length) % gallery.photos.length;
-      imgEl.src = gallery.photos[index];
+    function showNextPhoto() {
+      changePhoto((currentIndex + 1) % gallery.photos.length);
     }
 
-    document.getElementById("next").onclick = next;
-    document.getElementById("prev").onclick = prev;
-    document.getElementById("close-lightbox").onclick = closeLightbox;
+    function showPrevPhoto() {
+      changePhoto((currentIndex - 1 + gallery.photos.length) % gallery.photos.length);
+    }
 
-    document.addEventListener("keydown", (e) => {
+    nextButton.addEventListener("click", showNextPhoto);
+    prevButton.addEventListener("click", showPrevPhoto);
+    closeLightboxButton.addEventListener("click", closeLightbox);
+
+    lightbox.addEventListener("click", function(event) {
+      if (event.target === lightbox) {
+        closeLightbox();
+      }
+    });
+
+    document.addEventListener("keydown", function(event) {
       if (!lightbox.classList.contains("open")) return;
 
-      if (e.key === "Escape") closeLightbox();
-      if (e.key === "ArrowRight") next();
-      if (e.key === "ArrowLeft") prev();
+      if (event.key === "Escape") {
+        closeLightbox();
+      }
+
+      if (event.key === "ArrowRight") {
+        showNextPhoto();
+      }
+
+      if (event.key === "ArrowLeft") {
+        showPrevPhoto();
+      }
     });
 
-    // BACK TO TOP
-    document.querySelectorAll(".back-to-top").forEach(btn => {
-      btn.onclick = (e) => {
-        e.preventDefault();
+    document.querySelectorAll(".back-to-top").forEach(function(button) {
+      button.addEventListener("click", function(event) {
+        event.preventDefault();
         window.scrollTo({ top: 0, behavior: "smooth" });
-      };
+      });
     });
+
+    renderThumbnails();
   </script>
 </body>
 </html>
