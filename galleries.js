@@ -1,45 +1,39 @@
 /* TRAVELS */
 
 const galleries = {
-  patagonia: {
-    title: "Patagonia",
-    date: "February, 2026",
+ "winter-ma-surfing": {
+    title: "Winter MA Surfing",
+    date: "December, 2024",
     section: "travels",
     photos: [
-      "https://res.cloudinary.com/demo/image/upload/w_1600/sample.jpg",
-      "https://res.cloudinary.com/demo/image/upload/w_1600/samples/landscapes/nature-mountains.jpg",
-      "https://res.cloudinary.com/demo/image/upload/w_1600/samples/animals/reindeer.jpg",
-      "https://res.cloudinary.com/demo/image/upload/w_1600/samples/people/smiling-man.jpg",
-      "https://res.cloudinary.com/demo/image/upload/w_1600/samples/sheep.jpg",
-      "https://res.cloudinary.com/demo/image/upload/w_1600/samples/landscapes/beach-boat.jpg"
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774147346/DJI_0603_ymmhmp.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774147337/7R308790_vcw7cu.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774147714/DJI_0589-2_yzhnn1.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774147710/7R308831_cfhlyn.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774147716/7R308822_wb8viw.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774147344/7R308826_pfrdkw.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774147709/DJI_0601_jgi1nn.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774147334/DJI_0597_kroy9l.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774147339/7R308814_ehdg66.jpg"
     ]
   },
 
-  japan: {
-    title: "Japan",
-    date: "October, 2025",
+  "mit-womens-crew: {
+    title: "MIT Women's Crew",
+    date: "October, 2024",
     section: "travels",
     photos: [
-      "https://res.cloudinary.com/demo/image/upload/w_1600/samples/landscapes/nature-mountains.jpg",
-      "https://res.cloudinary.com/demo/image/upload/w_1600/samples/landscapes/girl-urban-view.jpg",
-      "https://res.cloudinary.com/demo/image/upload/w_1600/samples/people/jazz.jpg",
-      "https://res.cloudinary.com/demo/image/upload/w_1600/samples/food/spices.jpg",
-      "https://res.cloudinary.com/demo/image/upload/w_1600/samples/animals/cat.jpg",
-      "https://res.cloudinary.com/demo/image/upload/w_1600/samples/ecommerce/analog-classic.jpg"
-    ]
-  },
-
-  iceland: {
-    title: "Iceland",
-    date: "June, 2025",
-    section: "travels",
-    photos: [
-      "https://res.cloudinary.com/demo/image/upload/w_1600/samples/animals/reindeer.jpg",
-      "https://res.cloudinary.com/demo/image/upload/w_1600/samples/sheep.jpg",
-      "https://res.cloudinary.com/demo/image/upload/w_1600/sample.jpg",
-      "https://res.cloudinary.com/demo/image/upload/w_1600/samples/landscapes/beach-boat.jpg",
-      "https://res.cloudinary.com/demo/image/upload/w_1600/samples/landscapes/nature-mountains.jpg",
-      "https://res.cloudinary.com/demo/image/upload/w_1600/samples/people/bicycle.jpg"
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774147316/7R307829_yfgav3.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774147307/7R307856_ihmlxf.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774147305/7R307824_gkh8ia.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774147326/7R307804_clttzm.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774147324/7R307810_a6vdty.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774147322/7R307812_aj73lf.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774147318/7R307828_nvo5aa.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774147314/7R307844-2_o7dk0b.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774147312/7R307852_ldsqdj.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774147297/7R307822_vsncje.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774147303/7R307833_sairit.jpg"
     ]
   },
 
