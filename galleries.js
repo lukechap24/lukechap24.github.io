@@ -99,7 +99,7 @@ const galleries = {
 "https://res.cloudinary.com/dkarbzpvo/image/upload/v1774147228/7R307667_oedvm1.jpg",
 "https://res.cloudinary.com/dkarbzpvo/image/upload/v1774147224/7R307628_joyqx2.jpg",
     ]
-  }
+  },
   "mt-evans-wilderness": {
     title: "Mt. Evans Wilderness",
     date: "July, 2023",
