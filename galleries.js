@@ -18,7 +18,7 @@ const galleries = {
     ]
   },
 
-  "mit-womens-crew: {
+  "mit-womens-crew": {
     title: "MIT Women's Crew",
     date: "October, 2024",
     section: "travels",
