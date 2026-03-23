@@ -203,24 +203,6 @@ const galleries = {
 "https://res.cloudinary.com/dkarbzpvo/image/upload/v1774218382/7R301288_vnkgjq.jpg"
     ]
   },
-
-    "winter-ma-surfing": {
-    title: "Winter MA Surfing",
-    date: "December, 2023",
-    section: "travels",
-    photos: [
-"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774147346/DJI_0603_ymmhmp.jpg",
-"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774147337/7R308790_vcw7cu.jpg",
-"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774147714/DJI_0589-2_yzhnn1.jpg",
-"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774147710/7R308831_cfhlyn.jpg",
-"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774147716/7R308822_wb8viw.jpg",
-"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774147344/7R308826_pfrdkw.jpg",
-"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774147709/DJI_0601_jgi1nn.jpg",
-"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774147334/DJI_0597_kroy9l.jpg",
-"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774147339/7R308814_ehdg66.jpg"
-    ]
-  },
-
   
   "big-bend": {
     title: "Big Bend National Park",
@@ -257,6 +239,24 @@ const galleries = {
     ]
   },
 
+    "winter-ma-surfing": {
+    title: "Winter MA Surfing",
+    date: "December, 2023",
+    section: "travels",
+    photos: [
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774147346/DJI_0603_ymmhmp.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774147337/7R308790_vcw7cu.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774147714/DJI_0589-2_yzhnn1.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774147710/7R308831_cfhlyn.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774147716/7R308822_wb8viw.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774147344/7R308826_pfrdkw.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774147709/DJI_0601_jgi1nn.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774147334/DJI_0597_kroy9l.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774147339/7R308814_ehdg66.jpg"
+    ]
+  },
+
+  
   "mit-womens-crew": {
     title: "MIT Women's Crew",
     date: "October, 2023",
@@ -273,6 +273,200 @@ const galleries = {
 "https://res.cloudinary.com/dkarbzpvo/image/upload/v1774147312/7R307852_ldsqdj.jpg",
 "https://res.cloudinary.com/dkarbzpvo/image/upload/v1774147297/7R307822_vsncje.jpg",
 "https://res.cloudinary.com/dkarbzpvo/image/upload/v1774147303/7R307833_sairit.jpg"
+    ]
+  },
+
+    "turks-and-caicos": {
+    title: "Turks & Caicos",
+    date: "August, 2022",
+    section: "travels",
+    photos: [
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774224596/7R306285_uxo1xs.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774224678/7R306312_lfkex2.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774224663/7R306166_hfycy0.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774224659/7R306206_x60nef.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774224676/7R306300_jiblnn.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774224656/7R306170_z5qbaw.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774224645/7R306161_f2vq8e.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774224638/7R306216_ll11mx.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774224634/7R306228_twnqtu.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774224630/7R306176_eluc5h.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774224614/7R306222_lu3csu.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774224609/7R306395_zi6obd.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774224606/7R306180_w4dm4o.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774224596/7R306285_uxo1xs.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774224584/7R306295_nuoown.jpg"
+    ]
+  },
+
+      "misissippi": {
+    title: "Biloxi, MS",
+    date: "August, 2021",
+    section: "travels",
+    photos: [
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774225828/7R305616_spcqcg.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774225214/7R305573_dyadrl.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774225460/7R305633_cfo5ac.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774225456/7R305587_dk1mdb.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774225464/7R305619-2_mvinvy.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774225452/7R305585_fsif5a.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774225448/7R305619_pfnhli.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774225427/7R305620_v2tj05.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774225423/7R305597_ttadqp.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774225415/7R305637_awrhdj.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774225408/7R305687_nklkoe.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774225403/7R305679_xypnk3.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774225399/7R305601-3_m3uwvu.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774225388/7R305656_vjdry9.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774225384/7R305681_ifnomb.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774225376/7R305669_tnv2cj.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774225372/7R305683_exrdhg.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774225369/7R305621-2_copy_daatyv.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774225363/7R305640_ferfck.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774225278/7R305671_vnfr4p.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774225267/7R305704_bnat1w.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774225263/7R305706_mss5m7.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774225259/7R305616-4_kn1dea.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774225251/7R305667_izbyq5.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774225243/7R305614-2_nonizm.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774225235/7R305674_e6a3r9.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774225231/7R305660_mbmcyh.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774225226/7R305616-3_zobmrr.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774225222/7R305701_kvu3xq.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774225214/7R305573_dyadrl.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774225210/7R305605_hcl2lw.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774225203/7R305656-2_xsfhy6.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774225195/7R305614_hpgmzn.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774225184/7R305588_etf7vs.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774225179/7R305563_kqi27e.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774225175/7R305588-2_k8m7xd.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774225160/7R305616_kyckri.jpg"
+    ]
+  },
+
+      "lake-tahoe": {
+    title: "Lake Tahoe, NV",
+    date: "August, 2021",
+    section: "travels",
+    photos: [
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774226340/7R306018_nzitgp.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774226391/7R306105_chxshq.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774226387/7R306067_ljl0ac.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774226362/7R306007_vgkxnj.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774226358/7R306040-2_luwzob.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774226353/7R306032_pf4qah.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774226315/7R305993_iv0ugq.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774226349/7R306033_iobsrh.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774226311/7R306040_fdnb3q.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774226307/7R306068_j8xdhe.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774226490/7R305750_sf3huf.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774226456/7R305764_ubkj6r.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774226447/7R305760_gsppzf.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774226588/7R305813_q666ei.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774226584/7R305807_tm4cs1.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774226562/7R305931_b6fkjv.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774226541/7R305808_s1vish.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774226532/7R305957_wljhwa.jpg"
+    ]
+  },
+
+      "boston": {
+    title: "Boston",
+    date: "October, 2020",
+    section: "travels",
+    photos: [
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774226838/7R305052_eoq9qe.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774226738/7R305399_n6nl36.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774226999/7R305168_zgufzd.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774228834/7R300872_nvtelk.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774226995/7R305236_i39bhk.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774226982/7R305234_qsqovt.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774226976/7R305231_atwams.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774226966/7R305350_tlrr7f.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774226962/7R305344_vnkhqs.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774226957/7R305230_mda0lj.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774226916/7R305269_odesl1.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774226896/7R305242_qg90yh.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774226890/7R305054_edgaiv.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774226865/7R305053_d8g2zf.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774226833/7R305063_lgox1p.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774226819/7R305062_dgke6s.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774226810/7R305263_vyenzo.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774226808/7R305061_tx4sre.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774226802/7R305059_htunwn.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774226790/7R305070_vnilzz.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774226786/7R305072_u5rhbc.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774226777/7R305339_wzdvva.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774226768/7R305348_lywx5i.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774226764/7R305238_ipz7de.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774226759/7R305062-2_a9knm4.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774226751/7R305371_tmfal2.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774226746/7R305239_klvlun.jpg"
+    ]
+  },
+
+      "acadia": {
+    title: "Acadia National Park",
+    date: "October, 2020",
+    section: "travels",
+    photos: [
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774231644/DJI_0496_zho9du.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774231760/DJI_0499_dbzah5.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774231755/DJI_0510_eihiu5.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774231733/DJI_0505_wpqwvz.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774231733/DJI_0505_wpqwvz.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774231727/DJI_0511_badb66.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774231717/DJI_0500_al9wiu.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774231712/DJI_0514_jt5e6s.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774231712/DJI_0503_ahiyqs.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774231699/7R305086_aumk5m.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774231679/7R305107_rdxdbk.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774231677/7R305113_sxx36l.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774231673/DJI_0492_ayav0w.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774231671/DJI_0485_i2smcb.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774231662/DJI_0493_rrtnul.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774231651/DJI_0483_laoaag.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774231647/DJI_0497_ljh5wb.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774231644/DJI_0496_zho9du.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774231636/DJI_0481_tugw4t.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774231631/DJI_0495_bm3w1a.jpg"
+    ]
+  },
+
+      "yosemite": {
+    title: "Yosemite National Park",
+    date: "March, 2020",
+    section: "travels",
+    photos: [
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774232000/7R303699_viyddf.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774232029/7R303708_gcqjou.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774231994/7R304680_nnn5fn.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774232041/7R303690_zpahha.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774232035/7R303651_bx0yrz.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774232023/7R304676_qbcipf.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774232017/7R303753_mukzud.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774232012/7R303782_gwy2ko.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774232005/7R303772_suyado.jpg"
+    ]
+  },
+
+      "houston": {
+    title: "Houston",
+    date: "November, 2019",
+    section: "travels",
+    photos: [
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774233409/7R303984_g0ncoz.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774233464/7R304112-2_tq3y6s.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774233458/downtownreflect2-Edit-2_zegv5y.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774233452/7R303042_copy-2_ravix1.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774233446/7R303220_qvaax4.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774233440/spider_3_fnchnj.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774233434/7R303192-2-Edit_oxocnk.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774233428/7R304262-2_giywhu.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774233422/4R_DT_Pano_fixed-2_vpzabu.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774233416/7R303210_gkj1h0.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774233405/7R304042_nos5ky.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774233400/7R303211-Edit_nsgv56.jpg"
     ]
   },
 
@@ -504,6 +698,44 @@ const galleries = {
 "https://res.cloudinary.com/dkarbzpvo/image/upload/v1774147259/7R307261_cugu7x.jpg",
 "https://res.cloudinary.com/dkarbzpvo/image/upload/v1774147252/7R307376_mq4z0x.jpg",
 "https://res.cloudinary.com/dkarbzpvo/image/upload/v1774147256/7R307355_axc2ma.jpg"
+      ]
+  },
+
+      "breckenridge-22": {
+    title: "Breckenridge",
+    date: "August, 2022",
+    section: "colorado",
+    photos: [
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774225122/7R306614-2_ltstpm.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774224954/7R306475_ijyslu.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774224950/7R306449_ghfsvp.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774224943/7R306488_brnvnl.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774224939/7R306489_gr4nsz.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774224936/7R306660_j9xl6h.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774224928/7R306528-2_rclwyd.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774224903/7R306489-3_abguou.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774224899/k1l0aamzwredmo1pxcoz.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774224888/7R306588_cwhppg.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774224877/7R306600_scyfyh.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774224866/7R306562_m8icdj.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774224852/7R306603_sgfgo1.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774224849/7R306565_k8xbgp.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774224843/7R306595-2_nnmzce.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774224839/7R306605_bku3cz.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774224833/7R306581_iemxcs.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774224830/7R306436_kvtwxd.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774224825/7R306437_e8dpjm.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774224807/7R306541_qxutey.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774224804/7R306583_qo9gwn.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774224793/7R306431_c8iwde.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774224768/7R306694_mhzi5m.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774224756/7R306536_fabv4l.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774224752/7R306481_cldm7c.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774224748/7R306478-2_slyn1p.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774224719/7R306686_dbtxzu.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774224715/7R306453_pkite9.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774224708/7R306678_o4hzyp.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774224696/7R306487_bamtpu.jpg"
       ]
   },
 };
