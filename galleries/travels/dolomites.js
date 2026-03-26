@@ -1,4 +1,4 @@
-const galleries = {
+const gallery = {
     title: "Italian Dolomites",
     date: "July, 2024",
     section: "travels",
