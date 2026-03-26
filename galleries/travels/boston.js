@@ -1,0 +1,35 @@
+const gallery = {
+title: "Boston",
+    date: "October, 2020",
+    section: "travels",
+    photos: [
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774226838/7R305052_eoq9qe.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774226738/7R305399_n6nl36.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774226999/7R305168_zgufzd.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774228834/7R300872_nvtelk.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774226995/7R305236_i39bhk.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774226982/7R305234_qsqovt.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774226976/7R305231_atwams.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774226966/7R305350_tlrr7f.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774226962/7R305344_vnkhqs.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774226957/7R305230_mda0lj.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774226916/7R305269_odesl1.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774226896/7R305242_qg90yh.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774226890/7R305054_edgaiv.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774226865/7R305053_d8g2zf.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774226833/7R305063_lgox1p.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774226819/7R305062_dgke6s.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774226810/7R305263_vyenzo.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774226808/7R305061_tx4sre.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774226802/7R305059_htunwn.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774226790/7R305070_vnilzz.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774226786/7R305072_u5rhbc.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774226777/7R305339_wzdvva.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774226768/7R305348_lywx5i.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774226764/7R305238_ipz7de.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774226759/7R305062-2_a9knm4.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774226751/7R305371_tmfal2.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774226746/7R305239_klvlun.jpg"
+
+    ]
+  }
