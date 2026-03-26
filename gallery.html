@@ -62,166 +62,90 @@
     </div>
   </div>
 
-  <script src="galleries.js"></script>
+<script>
+function getGalleryKey() {
+  const params = new URLSearchParams(window.location.search);
+  return params.get("gallery");
+}
 
-  <script>
-    function getGalleryKey() {
-      const params = new URLSearchParams(window.location.search);
-      return params.get("gallery");
-    }
+function getSection() {
+  const params = new URLSearchParams(window.location.search);
+  return params.get("section");
+}
 
-    function makeThumb(url) {
-      return url.replace(
-        "/upload/",
-        "/upload/w_400,h_500,c_fill,q_auto,f_auto/"
-      );
-    }
+function loadGalleryScript(section, galleryKey) {
+  return new Promise((resolve, reject) => {
+    const script = document.createElement("script");
+    script.src = `galleries/${section}/${galleryKey}.js`;
+    script.onload = resolve;
+    script.onerror = reject;
+    document.body.appendChild(script);
+  });
+}
 
-    function makeFull(url) {
-      return url.replace(
-        "/upload/",
-        "/upload/w_1400,q_auto,f_auto/"
-      );
-    }
+function makeThumb(url) {
+  return url.replace(
+    "/upload/",
+    "/upload/w_400,h_500,c_fill,q_auto,f_auto/"
+  );
+}
 
-    const galleryKey = getGalleryKey();
-    const gallery = galleries[galleryKey];
+function makeFull(url) {
+  return url.replace(
+    "/upload/",
+    "/upload/w_1400,q_auto,f_auto/"
+  );
+}
 
-    if (!gallery) {
-      document.body.innerHTML = "<p style='padding: 40px; font-family: Manrope, Arial, sans-serif;'>Gallery not found.</p>";
-      throw new Error("Gallery not found");
-    }
+async function initGallery() {
+  const galleryKey = getGalleryKey();
+  const section = getSection();
 
-    document.title = `Luke Chapman Photography — ${gallery.title}`;
-    document.getElementById("gallery-title").textContent = gallery.title;
-    document.getElementById("gallery-subtitle").textContent =
-      `${gallery.date} · ${gallery.photos.length} photographs`;
-    document.getElementById("lightbox-title").textContent = gallery.title;
+  await loadGalleryScript(section, galleryKey);
 
-    if (gallery.section === "travels") {
-      document.getElementById("travels-link").classList.add("active");
-    } else {
-      document.getElementById("colorado-link").classList.add("active");
-    }
+  document.title = `Luke Chapman Photography — ${gallery.title}`;
+  document.getElementById("gallery-title").textContent = gallery.title;
+  document.getElementById("gallery-subtitle").textContent =
+    `${gallery.date} · ${gallery.photos.length} photographs`;
+  document.getElementById("lightbox-title").textContent = gallery.title;
 
-    document.getElementById("back-link").addEventListener("click", function(e) {
-      e.preventDefault();
-      window.location.href = gallery.section + ".html";
+  renderThumbnails();
+}
+
+const thumbGrid = document.getElementById("thumb-grid");
+const lightbox = document.getElementById("lightbox");
+const lightboxImg = document.getElementById("lightbox-img");
+
+let currentIndex = 0;
+
+function renderThumbnails() {
+  thumbGrid.innerHTML = "";
+
+  gallery.photos.forEach((photoUrl, index) => {
+    const thumb = document.createElement("div");
+    thumb.className = "thumb";
+
+    const img = document.createElement("img");
+    img.src = makeThumb(photoUrl);
+    img.loading = "lazy";
+
+    thumb.appendChild(img);
+    thumb.addEventListener("click", function() {
+      openLightbox(index);
     });
 
-    const thumbGrid = document.getElementById("thumb-grid");
-    const lightbox = document.getElementById("lightbox");
-    const lightboxImg = document.getElementById("lightbox-img");
-    const closeLightboxButton = document.getElementById("close-lightbox");
-    const prevButton = document.getElementById("prev");
-    const nextButton = document.getElementById("next");
+    thumbGrid.appendChild(thumb);
+  });
+}
 
-    let currentIndex = 0;
-    let isTransitioning = false;
+function openLightbox(index) {
+  currentIndex = index;
+  lightboxImg.src = makeFull(gallery.photos[index]);
+  lightbox.classList.add("open");
+}
 
-    function renderThumbnails() {
-      thumbGrid.innerHTML = "";
-
-      gallery.photos.forEach((photoUrl, index) => {
-        const thumb = document.createElement("div");
-        thumb.className = "thumb";
-
-        const img = document.createElement("img");
-        img.src = makeThumb(photoUrl);
-        img.alt = `${gallery.title} photo ${index + 1}`;
-        img.loading = "lazy";
-        img.decoding = "async";
-
-        thumb.appendChild(img);
-        thumb.addEventListener("click", function() {
-          openLightbox(index);
-        });
-
-        thumbGrid.appendChild(thumb);
-      });
-    }
-
-    function openLightbox(index) {
-      currentIndex = index;
-      lightboxImg.src = makeFull(gallery.photos[index]);
-      lightboxImg.alt = `${gallery.title} photo ${index + 1}`;
-      lightbox.classList.add("open");
-    
-      preloadImage(index + 1);
-      preloadImage(index - 1);
-    }
-
-    function preloadImage(index) {
-      if (index < 0 || index >= gallery.photos.length) return;
-      const img = new Image();
-      img.src = makeFull(gallery.photos[index]);
-    }
-
-    function closeLightbox() {
-      lightbox.classList.remove("open");
-    }
-
-    function changePhoto(newIndex) {
-      if (isTransitioning) return;
-
-      isTransitioning = true;
-      lightboxImg.classList.add("fade-out");
-
-      setTimeout(function() {
-        currentIndex = newIndex;
-        lightboxImg.src = makeFull(gallery.photos[newIndex]);
-        lightboxImg.alt = `${gallery.title} photo ${newIndex + 1}`;
-
-        lightboxImg.onload = function() {
-          lightboxImg.classList.remove("fade-out");
-          isTransitioning = false;
-          lightboxImg.onload = null;
-        };
-      }, 150);
-    }
-
-    function showNextPhoto() {
-      changePhoto((currentIndex + 1) % gallery.photos.length);
-    }
-
-    function showPrevPhoto() {
-      changePhoto((currentIndex - 1 + gallery.photos.length) % gallery.photos.length);
-    }
-
-    nextButton.addEventListener("click", showNextPhoto);
-    prevButton.addEventListener("click", showPrevPhoto);
-    closeLightboxButton.addEventListener("click", closeLightbox);
-
-    lightbox.addEventListener("click", function(event) {
-      if (event.target === lightbox) {
-        closeLightbox();
-      }
-    });
-
-    document.addEventListener("keydown", function(event) {
-      if (!lightbox.classList.contains("open")) return;
-
-      if (event.key === "Escape") {
-        closeLightbox();
-      }
-
-      if (event.key === "ArrowRight") {
-        showNextPhoto();
-      }
-
-      if (event.key === "ArrowLeft") {
-        showPrevPhoto();
-      }
-    });
-
-    document.querySelectorAll(".back-to-top").forEach(function(button) {
-      button.addEventListener("click", function(event) {
-        event.preventDefault();
-        window.scrollTo({ top: 0, behavior: "smooth" });
-      });
-    });
-
-    renderThumbnails();
-  </script>
+initGallery();
+</script>
+  
 </body>
 </html>
