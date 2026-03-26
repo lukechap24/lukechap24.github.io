@@ -299,7 +299,7 @@ const galleries = {
     ]
   },
 
-      "misissippi": {
+      "mississippi": {
     title: "Biloxi, MS",
     date: "August, 2021",
     section: "travels",
