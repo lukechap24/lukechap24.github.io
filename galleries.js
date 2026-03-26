@@ -724,7 +724,6 @@ const galleries = {
 "https://res.cloudinary.com/dkarbzpvo/image/upload/v1774224833/7R306581_iemxcs.jpg",
 "https://res.cloudinary.com/dkarbzpvo/image/upload/v1774224830/7R306436_kvtwxd.jpg",
 "https://res.cloudinary.com/dkarbzpvo/image/upload/v1774224825/7R306437_e8dpjm.jpg",
-"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774224807/7R306541_qxutey.jpg",
 "https://res.cloudinary.com/dkarbzpvo/image/upload/v1774224804/7R306583_qo9gwn.jpg",
 "https://res.cloudinary.com/dkarbzpvo/image/upload/v1774224793/7R306431_c8iwde.jpg",
 "https://res.cloudinary.com/dkarbzpvo/image/upload/v1774224768/7R306694_mhzi5m.jpg",
