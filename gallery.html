@@ -146,6 +146,15 @@
       lightboxImg.src = makeFull(gallery.photos[index]);
       lightboxImg.alt = `${gallery.title} photo ${index + 1}`;
       lightbox.classList.add("open");
+    
+      preloadImage(index + 1);
+      preloadImage(index - 1);
+    }
+
+    function preloadImage(index) {
+      if (index < 0 || index >= gallery.photos.length) return;
+      const img = new Image();
+      img.src = makeFull(gallery.photos[index]);
     }
 
     function closeLightbox() {
