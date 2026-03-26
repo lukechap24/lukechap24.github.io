@@ -1,0 +1,35 @@
+const gallery = {
+    title: "Big Bend National Park",
+    date: "January, 2024",
+    section: "travels",
+    photos: [
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774219017/7R300186_laggwi.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774219043/DJI_0611_luaak2.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774219066/7R309814_kclrcw.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774219061/7R300210_cwcl6v.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774219059/7R309962_pagntc.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774219057/7R300173_jg6gdw.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774219055/7R309806_adgfi9.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774219053/7R309807_geqc2o.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774219051/7R300162_yndfyr.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774219049/7R309804_tggtqa.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774219047/7R300111_k16uny.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774219045/7R309860_b1kea2.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774219041/7R309859_wlk7ex.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774219039/7R309871_jvnrc1.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774219037/7R300048_htbooz.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774219034/7R300062_abojru.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774219032/7R300126_qrkwbn.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774219030/7R309921_udmnpp.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774219028/7R309854_w1vpbl.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774219026/7R309845_a40f6l.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774219024/7R309835_tv5mlp.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774219022/7R300018_llnstx.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774219015/7R300151_pmlwxa.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774219011/7R309995_mzfgnl.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774219009/7R300033_drizdv.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774219007/7R300220_pnnbms.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774219004/7R309832_dktwws.jpg"
+
+    ]
+  }
