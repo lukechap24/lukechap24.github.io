@@ -1,0 +1,50 @@
+const galleries = {
+
+   "dolomites": {
+    title: "Italian Dolomites",
+    date: "July, 2024",
+    section: "travels",
+    photos: [
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774218237/7R301774-4_vwz8qi.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774218242/7R301686_igrbxu.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774218268/7R301657_nfrrag.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774218267/7R301672-2_ikfjmt.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774218263/7R301681_wv97ll.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774218262/7R301656_soozvw.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774218260/7R301774-2_duzhlc.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774218259/7R301654_jxmdov.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774218257/7R301683_zhvieu.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774218254/7R301669_ubpfth.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774218250/7R301790-2_eiyqls.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774218245/7R301679_mlttvw.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774218244/7R301645_jm2ngz.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774218239/7R301674-3_svpz6k.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774218236/7R301652_zhvf9n.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774218234/7R301691_x6x824.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774218233/7R301685_dalnvq.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774218231/7R301647_e1gjyn.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774218227/7R301635_hcva1c.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774218226/7R301780_e4fokk.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774218224/7R301623_iiyabd.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774218222/7R301636_ctrb7g.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774218219/7R301626_trjkwv.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774218217/7R301633_fsmjwq.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774218215/7R301790_go9sr1.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774218213/7R301779_evrdkm.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774218211/7R301786_lsxugl.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774218209/7R301619_gaukf0.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774218208/7R301631_pah8cl.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774218199/7R301616_rz8su2.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774218191/7R301662_s55zpg.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774218189/7R301677_giueis.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774218188/7R301619-2_cfn6j6.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774218183/7R301660_pve8iy.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774218176/7R301673_m4zoky.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774218175/7R301667_zoumfx.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774218173/7R301666_znwun2.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774218172/7R301672_sxfyvm.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774218170/7R301706_bmrpcg.jpg"
+
+    ]
+  }
+}
