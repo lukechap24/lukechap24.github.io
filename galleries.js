@@ -305,7 +305,6 @@ const galleries = {
     section: "travels",
     photos: [
 "https://res.cloudinary.com/dkarbzpvo/image/upload/v1774225828/7R305616_spcqcg.jpg",
-"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774225214/7R305573_dyadrl.jpg",
 "https://res.cloudinary.com/dkarbzpvo/image/upload/v1774225460/7R305633_cfo5ac.jpg",
 "https://res.cloudinary.com/dkarbzpvo/image/upload/v1774225456/7R305587_dk1mdb.jpg",
 "https://res.cloudinary.com/dkarbzpvo/image/upload/v1774225464/7R305619-2_mvinvy.jpg",
