@@ -1,0 +1,37 @@
+const gallery = {
+    title: "Breckenridge",
+    date: "August, 2022",
+    section: "colorado",
+    photos: [
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774225122/7R306614-2_ltstpm.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774224954/7R306475_ijyslu.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774224950/7R306449_ghfsvp.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774224943/7R306488_brnvnl.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774224939/7R306489_gr4nsz.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774224936/7R306660_j9xl6h.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774224928/7R306528-2_rclwyd.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774224903/7R306489-3_abguou.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774224899/k1l0aamzwredmo1pxcoz.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774224888/7R306588_cwhppg.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774224877/7R306600_scyfyh.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774224866/7R306562_m8icdj.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774224852/7R306603_sgfgo1.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774224849/7R306565_k8xbgp.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774224843/7R306595-2_nnmzce.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774224839/7R306605_bku3cz.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774224833/7R306581_iemxcs.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774224830/7R306436_kvtwxd.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774224825/7R306437_e8dpjm.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774224804/7R306583_qo9gwn.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774224793/7R306431_c8iwde.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774224768/7R306694_mhzi5m.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774224756/7R306536_fabv4l.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774224752/7R306481_cldm7c.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774224748/7R306478-2_slyn1p.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774224719/7R306686_dbtxzu.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774224715/7R306453_pkite9.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774224708/7R306678_o4hzyp.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1774224696/7R306487_bamtpu.jpg"
+
+    ]
+  }
