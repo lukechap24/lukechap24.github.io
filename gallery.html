@@ -167,31 +167,29 @@
       currentIndex = index;
       const newSrc = makeFull(gallery.photos[currentIndex]);
 
-      lightbox.classList.add("is-loading");
       prevBtn.disabled = true;
       nextBtn.disabled = true;
-
-      await preloadImage(newSrc);
 
       lightboxImg.classList.remove("loaded");
       lightboxImg.classList.add("fade-out");
 
-      requestAnimationFrame(() => {
+      await preloadImage(newSrc);
+
+      setTimeout(() => {
         lightboxImg.onload = function () {
-          lightboxImg.classList.remove("fade-out");
-          lightboxImg.classList.add("loaded");
-
-          lightbox.classList.remove("is-loading");
-          prevBtn.disabled = false;
-          nextBtn.disabled = false;
-          isTransitioning = false;
-
-          preloadNeighbors(currentIndex);
+          requestAnimationFrame(() => {
+            lightboxImg.classList.remove("fade-out");
+            lightboxImg.classList.add("loaded");
+            prevBtn.disabled = false;
+            nextBtn.disabled = false;
+            isTransitioning = false;
+            preloadNeighbors(currentIndex);
+          });
         };
 
         lightboxImg.src = newSrc;
         lightboxImg.alt = `${gallery.title} photograph ${currentIndex + 1}`;
-      });
+      }, 180);
     }
 
     function openLightbox(index) {
