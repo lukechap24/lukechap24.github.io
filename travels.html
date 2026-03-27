@@ -133,13 +133,23 @@
   </div>
 </div>
 
-  <script>
-    document.querySelectorAll('.back-to-top').forEach(function(button) {
-      button.addEventListener('click', function(event) {
-        event.preventDefault();
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      });
+<script>
+  document.querySelectorAll('.back-to-top').forEach(function(button) {
+    button.addEventListener('click', function(event) {
+      event.preventDefault();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     });
-  </script>
+  });
+
+  document.querySelectorAll('.folder img').forEach(function(img) {
+    if (img.complete) {
+      img.classList.add('loaded');
+    } else {
+      img.addEventListener('load', function() {
+        img.classList.add('loaded');
+      });
+    }
+  });
+</script>
 </body>
 </html>
