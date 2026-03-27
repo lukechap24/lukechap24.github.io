@@ -97,24 +97,13 @@ function makeFull(url) {
   );
 }
 
-async function initGallery() {
-  const galleryKey = getGalleryKey();
-  const section = getSection();
-
-  await loadGalleryScript(section, galleryKey);
-
-  document.title = `Luke Chapman Photography — ${gallery.title}`;
-  document.getElementById("gallery-title").textContent = gallery.title;
-  document.getElementById("gallery-subtitle").textContent =
-    `${gallery.date} · ${gallery.photos.length} photographs`;
-  document.getElementById("lightbox-title").textContent = gallery.title;
-
-  renderThumbnails();
-}
-
 const thumbGrid = document.getElementById("thumb-grid");
 const lightbox = document.getElementById("lightbox");
 const lightboxImg = document.getElementById("lightbox-img");
+const backLink = document.getElementById("back-link");
+const closeLightboxBtn = document.getElementById("close-lightbox");
+const prevBtn = document.getElementById("prev");
+const nextBtn = document.getElementById("next");
 
 let currentIndex = 0;
 
@@ -130,7 +119,7 @@ function renderThumbnails() {
     img.loading = "lazy";
 
     thumb.appendChild(img);
-    thumb.addEventListener("click", function() {
+    thumb.addEventListener("click", function () {
       openLightbox(index);
     });
 
@@ -138,11 +127,76 @@ function renderThumbnails() {
   });
 }
 
+function updateLightboxImage() {
+  lightboxImg.src = makeFull(gallery.photos[currentIndex]);
+}
+
 function openLightbox(index) {
   currentIndex = index;
-  lightboxImg.src = makeFull(gallery.photos[index]);
+  updateLightboxImage();
   lightbox.classList.add("open");
 }
+
+function closeLightbox() {
+  lightbox.classList.remove("open");
+}
+
+function showPrevImage() {
+  currentIndex = (currentIndex - 1 + gallery.photos.length) % gallery.photos.length;
+  updateLightboxImage();
+}
+
+function showNextImage() {
+  currentIndex = (currentIndex + 1) % gallery.photos.length;
+  updateLightboxImage();
+}
+
+async function initGallery() {
+  const galleryKey = getGalleryKey();
+  const section = getSection();
+
+  await loadGalleryScript(section, galleryKey);
+
+  document.title = `Luke Chapman Photography — ${gallery.title}`;
+  document.getElementById("gallery-title").textContent = gallery.title;
+  document.getElementById("gallery-subtitle").textContent =
+    `${gallery.date} · ${gallery.photos.length} photographs`;
+  document.getElementById("lightbox-title").textContent = gallery.title;
+
+  backLink.href = `${section}.html`;
+
+  renderThumbnails();
+}
+
+backLink.addEventListener("click", function (event) {
+  const section = getSection();
+  if (section) {
+    event.preventDefault();
+    window.location.href = `${section}.html`;
+  }
+});
+
+closeLightboxBtn.addEventListener("click", closeLightbox);
+prevBtn.addEventListener("click", showPrevImage);
+nextBtn.addEventListener("click", showNextImage);
+
+document.addEventListener("keydown", function (event) {
+  if (!lightbox.classList.contains("open")) return;
+
+  if (event.key === "Escape") {
+    closeLightbox();
+  } else if (event.key === "ArrowLeft") {
+    showPrevImage();
+  } else if (event.key === "ArrowRight") {
+    showNextImage();
+  }
+});
+
+lightbox.addEventListener("click", function (event) {
+  if (event.target === lightbox) {
+    closeLightbox();
+  }
+});
 
 initGallery();
 </script>
