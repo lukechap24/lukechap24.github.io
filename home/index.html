@@ -223,13 +223,9 @@
     </div>
   </div>
 
+  <script src="/js/featured-images.js"></script>
   <script>
-    const featuredImages = [
-      // Paste your image URLs here, like:
-      // "https://res.cloudinary.com/your-image-1.jpg",
-      // "https://res.cloudinary.com/your-image-2.jpg",
-      // "https://res.cloudinary.com/your-image-3.jpg",
-    ];
+    const featuredImages = Array.isArray(window.featuredImages) ? window.featuredImages : [];
 
     const rotator = document.querySelector(".hero-rotator");
     let currentSlide = 0;
@@ -245,7 +241,7 @@
         placeholder.style.justifyContent = "center";
         placeholder.style.color = "#8a8a8a";
         placeholder.style.fontSize = "1rem";
-        placeholder.textContent = "Add featured image URLs in home/index.html";
+        placeholder.textContent = "Add featured image URLs in /js/featured-images.js";
         rotator.appendChild(placeholder);
         return;
       }
@@ -267,7 +263,6 @@
 
     function showNextSlide() {
       if (slideEls.length <= 1) return;
-
       slideEls[currentSlide].classList.remove("active");
       currentSlide = (currentSlide + 1) % slideEls.length;
       slideEls[currentSlide].classList.add("active");
