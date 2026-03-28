@@ -2,10 +2,119 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta http-equiv="refresh" content="0; url=/travels/">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Luke Chapman Photography</title>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    html,
+    body {
+      margin: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      font-family: Manrope, Arial, sans-serif;
+    }
+
+    body {
+      background-image:
+        linear-gradient(rgba(0, 0, 0, 0.22), rgba(0, 0, 0, 0.22)),
+        url("https://res.cloudinary.com/dkarbzpvo/image/upload/v1774218605/7R301594_pnnuha.jpg");
+      background-size: cover;
+      background-position: center center;
+      background-repeat: no-repeat;
+      color: white;
+    }
+
+    .splash {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+    }
+
+    .hero-content {
+      position: absolute;
+      top: 41%;
+      left: 29%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+    }
+
+    .site-title {
+      margin: 0 0 22px;
+      font-size: 2.25rem;
+      font-weight: 300;
+      letter-spacing: 0.04em;
+      color: rgba(255, 255, 255, 0.96);
+      text-shadow: 0 1px 10px rgba(0, 0, 0, 0.18);
+    }
+
+    .enter-button {
+      display: inline-block;
+      padding: 11px 22px;
+      border: 1px solid rgba(255, 255, 255, 0.88);
+      color: white;
+      text-decoration: none;
+      font-size: 0.95rem;
+      font-weight: 400;
+      letter-spacing: 0.02em;
+      background: rgba(255, 255, 255, 0.04);
+      transition:
+        background 0.22s ease,
+        color 0.22s ease,
+        border-color 0.22s ease,
+        transform 0.22s ease;
+    }
+
+    .enter-button:hover {
+      background: rgba(255, 255, 255, 0.95);
+      color: #111;
+      border-color: rgba(255, 255, 255, 0.95);
+      transform: translateY(-1px);
+    }
+
+    @media (max-width: 1100px) {
+      .hero-content {
+        left: 32%;
+        top: 43%;
+      }
+    }
+
+    @media (max-width: 800px) {
+      .hero-content {
+        left: 50%;
+        top: 44%;
+      }
+
+      .site-title {
+        font-size: 1.9rem;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .hero-content {
+        width: calc(100% - 48px);
+        left: 50%;
+        top: 46%;
+      }
+
+      .site-title {
+        font-size: 1.65rem;
+        margin-bottom: 18px;
+      }
+
+      .enter-button {
+        padding: 10px 20px;
+        font-size: 0.92rem;
+      }
+    }
+  </style>
 </head>
 <body>
-  <p><a href="/travels/">Go to site</a></p>
+  <main class="splash">
+    <div class="hero-content">
+      <h1 class="site-title">Luke Chapman</h1>
+      <a class="enter-button" href="/travels/">Howdy</a>
+    </div>
+  </main>
 </body>
 </html>
