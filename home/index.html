@@ -7,12 +7,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/styles.css">
   <style>
-    .home-page {
-      max-width: 1120px;
-      margin: 0 auto;
-      padding: 40px 28px 90px;
-    }
-
     .hero-rotator {
       width: 100%;
       aspect-ratio: 16 / 7.5;
@@ -131,10 +125,6 @@
     }
 
     @media (max-width: 640px) {
-      .home-page {
-        padding: 28px 20px 70px;
-      }
-
       .hero-rotator-overlay {
         left: 18px;
         bottom: 16px;
@@ -153,7 +143,7 @@
   </style>
 </head>
 <body id="top">
-  <main class="home-page">
+  <div class="page">
     <header>
       <h1>
         <a href="/" class="home-link">Luke Chapman</a>
@@ -231,7 +221,7 @@
         </div>
       </div>
     </div>
-  </main>
+  </div>
 
   <script>
     const featuredImages = [
