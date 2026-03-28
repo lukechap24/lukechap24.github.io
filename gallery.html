@@ -6,17 +6,17 @@
   <title>Gallery</title>
 
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="/styles.css">
 </head>
 <body id="top">
   <div class="page">
     <header>
       <h1>
-        <a href="travels.html" class="home-link">Luke Chapman</a>
+        <a href="/travels/" class="home-link">Luke Chapman</a>
       </h1>
       <nav>
-        <a href="travels.html" id="travels-link">Travels</a>
-        <a href="colorado.html" id="colorado-link">Colorado</a>
+        <a href="/travels/" id="travels-link">Travels</a>
+        <a href="/colorado/" id="colorado-link">Colorado</a>
       </nav>
     </header>
 
@@ -224,7 +224,7 @@
         `${gallery.date} · ${gallery.photos.length} photographs`;
       document.getElementById("lightbox-title").textContent = gallery.title;
 
-      backLink.href = `${section}.html`;
+      backLink.href = `/${section}/`;
 
       if (section === "travels") {
         travelsLink.classList.add("active");
@@ -239,7 +239,7 @@
       const section = getSection();
       if (section) {
         event.preventDefault();
-        window.location.href = `${section}.html`;
+        window.location.href = `/${section}/`;
       }
     });
 
