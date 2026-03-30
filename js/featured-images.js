@@ -19,7 +19,6 @@ window.featuredImages = [
   "https://res.cloudinary.com/dkarbzpvo/image/upload/v1774194386/7R302791_ry3nv7.jpg",
   "https://res.cloudinary.com/dkarbzpvo/image/upload/v1774194375/7R302740_p6tptr.jpg",
   "https://res.cloudinary.com/dkarbzpvo/image/upload/v1774232000/7R303699_viyddf.jpg",
-  "https://res.cloudinary.com/dkarbzpvo/image/upload/v1774231994/7R304680_nnn5fn.jpg",
   "https://res.cloudinary.com/dkarbzpvo/image/upload/v1774219017/7R300186_laggwi.jpg",
   "https://res.cloudinary.com/dkarbzpvo/image/upload/v1774194659/7R302656_o5q7g5.jpg",
   "https://res.cloudinary.com/dkarbzpvo/image/upload/v1774218895/7R301265_o28ml2.jpg",
