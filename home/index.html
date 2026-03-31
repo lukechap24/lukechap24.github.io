@@ -7,29 +7,26 @@
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/styles.css">
   <style>
+    
     .hero-rotator {
-      width: 100%;
-      aspect-ratio: 3 / 2;
-      max-height: 70vh;
-      position: relative;
-      overflow: hidden;
-      background: #f2f2f2;
+      display: flex;
+      justify-content: center;
+      align-items: center;
       margin-bottom: 70px;
     }
 
-    .hero-rotator img {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      opacity: 0;
-      transition: opacity 1s ease;
-    }
+.hero-rotator img {
+  max-height: 70vh;   /* 👈 controls how tall it can be */
+  width: auto;        /* 👈 keeps natural ratio */
+  height: auto;
+  object-fit: contain;
+  opacity: 0;
+  transition: opacity 1s ease;
+}
 
-    .hero-rotator img.active {
-      opacity: 1;
-    }
+.hero-rotator img.active {
+  opacity: 1;
+}
 
     .hero-rotator-overlay {
       position: absolute;
