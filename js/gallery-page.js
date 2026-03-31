@@ -11,7 +11,7 @@ function loadGalleryScript(section, galleryKey) {
 function makeThumb(url) {
   return url.replace(
     "/upload/",
-    "/upload/w_400,h_500,c_fill,q_auto,f_auto/"
+    "/upload/w_700,q_auto,f_auto/"
   );
 }
 
