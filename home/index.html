@@ -7,23 +7,30 @@
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/styles.css">
   <style>
-    
     .hero-rotator {
+      position: relative;
       display: flex;
       justify-content: center;
-      align-items: center;
+      align-items: flex-start;
+      min-height: 200px;
       margin-bottom: 70px;
+      background: transparent;
     }
 
     .hero-rotator img {
-      max-height: 70vh;   /* 👈 controls how tall it can be */
-      width: auto;        /* 👈 keeps natural ratio */
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      max-width: min(100%, 1100px);
+      max-height: 70vh;
+      width: auto;
       height: auto;
       object-fit: contain;
       opacity: 0;
       transition: opacity 1s ease;
     }
-    
+
     .hero-rotator img.active {
       opacity: 1;
     }
@@ -37,6 +44,7 @@
       text-shadow: 0 1px 10px rgba(0, 0, 0, 0.3);
       font-size: 0.95rem;
       letter-spacing: 0.03em;
+      pointer-events: none;
     }
 
     .home-content {
@@ -111,9 +119,8 @@
     }
 
     @media (max-width: 900px) {
-      .hero-rotator {
-        aspect-ratio: 4 / 3;
-        margin-bottom: 48px;
+      .hero-rotator img {
+        max-height: 60vh;
       }
 
       .home-content {
@@ -123,6 +130,16 @@
     }
 
     @media (max-width: 640px) {
+      .hero-rotator {
+        min-height: 160px;
+        margin-bottom: 48px;
+      }
+
+      .hero-rotator img {
+        max-width: 100%;
+        max-height: 52vh;
+      }
+
       .hero-rotator-overlay {
         left: 18px;
         bottom: 16px;
@@ -163,11 +180,19 @@
         <h1>About</h1>
 
         <p>
-          I’m Luke Chapman, an outdoor enthusiast who enjoys bringing my camera with me on my adventures.
+          I’m Luke Chapman, a photographer drawn to landscapes, quiet moments,
+          and places with a strong sense of atmosphere.
         </p>
 
         <p>
-          This site is a home for selected work from domestic and international travels and time in my now home state of Colorado.
+          This site is a home for selected work from travels, time in Colorado,
+          and other photographs I keep coming back to.
+        </p>
+
+        <p>
+          Over time, I want this page to feel like a living front door to the
+          rest of the site — a place for favorite images, current work, and a
+          little context behind what I’m making.
         </p>
 
         <div class="home-actions">
@@ -179,19 +204,19 @@
         <div class="home-side-card">
           <div class="home-side-label">Focus</div>
           <div class="home-side-text">
-            Landscape, travel, and wildlife photography
+            Landscape, travel, and environmental photography.
           </div>
         </div>
 
         <div class="home-side-card">
           <div class="home-side-label">Based In</div>
           <div class="home-side-text">
-            Denver, Colorado
+            Colorado
           </div>
         </div>
 
         <div class="home-side-card">
-          <div class="home-side-label">Other platforms</div>
+          <div class="home-side-label">Elsewhere</div>
           <div class="home-side-text">
             <a href="https://instagram.com/_l.chap" target="_blank" class="contact-link">Instagram</a>
           </div>
@@ -221,14 +246,21 @@
     let currentSlide = 0;
     let slideEls = [];
 
+    function setRotatorHeightFromImage(img) {
+      if (!img) return;
+      const rect = img.getBoundingClientRect();
+      if (rect.height > 0) {
+        rotator.style.height = `${rect.height}px`;
+      }
+    }
+
     function buildRotator(images) {
       if (!images.length) {
         const placeholder = document.createElement("div");
-        placeholder.style.position = "absolute";
-        placeholder.style.inset = "0";
         placeholder.style.display = "flex";
         placeholder.style.alignItems = "center";
         placeholder.style.justifyContent = "center";
+        placeholder.style.minHeight = "200px";
         placeholder.style.color = "#8a8a8a";
         placeholder.style.fontSize = "1rem";
         placeholder.textContent = "Add featured image URLs in /js/featured-images.js";
@@ -242,6 +274,12 @@
         img.alt = `Featured photograph ${index + 1}`;
         img.loading = index === 0 ? "eager" : "lazy";
 
+        img.addEventListener("load", function () {
+          if (index === 0 && img.classList.contains("active")) {
+            setRotatorHeightFromImage(img);
+          }
+        });
+
         if (index === 0) {
           img.classList.add("active");
         }
@@ -253,9 +291,20 @@
 
     function showNextSlide() {
       if (slideEls.length <= 1) return;
+
       slideEls[currentSlide].classList.remove("active");
       currentSlide = (currentSlide + 1) % slideEls.length;
       slideEls[currentSlide].classList.add("active");
+
+      const activeImg = slideEls[currentSlide];
+      if (activeImg.complete) {
+        setRotatorHeightFromImage(activeImg);
+      } else {
+        activeImg.addEventListener("load", function onLoad() {
+          setRotatorHeightFromImage(activeImg);
+          activeImg.removeEventListener("load", onLoad);
+        });
+      }
     }
 
     document.querySelectorAll(".back-to-top").forEach(function (button) {
@@ -266,6 +315,20 @@
     });
 
     buildRotator(featuredImages);
+
+    window.addEventListener("load", function () {
+      const activeImg = document.querySelector(".hero-rotator img.active");
+      if (activeImg) {
+        setRotatorHeightFromImage(activeImg);
+      }
+    });
+
+    window.addEventListener("resize", function () {
+      const activeImg = document.querySelector(".hero-rotator img.active");
+      if (activeImg) {
+        setRotatorHeightFromImage(activeImg);
+      }
+    });
 
     if (featuredImages.length > 1) {
       setInterval(showNextSlide, 3200);
