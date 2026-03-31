@@ -227,16 +227,19 @@ nav a:hover {
 }
 
 .thumb-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 12px;
+  column-count: 3;
+  column-gap: 12px;
   margin-top: 22px;
-  align-items: start;
 }
 
 .thumb {
+  display: inline-block;
   width: 100%;
+  margin: 0 0 12px;
   cursor: pointer;
+  break-inside: avoid;
+  -webkit-column-break-inside: avoid;
+  page-break-inside: avoid;
   background: #efefef;
 }
 
@@ -257,6 +260,18 @@ nav a:hover {
 .thumb:hover img.loaded {
   opacity: 0.84;
   transform: scale(1.01);
+}
+
+@media (max-width: 1000px) {
+  .thumb-grid {
+    column-count: 2;
+  }
+}
+
+@media (max-width: 640px) {
+  .thumb-grid {
+    column-count: 1;
+  }
 }
 
 .lightbox {
