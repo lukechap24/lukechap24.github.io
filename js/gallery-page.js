@@ -81,13 +81,19 @@ function renderThumbnails() {
     img.loading = index < 6 ? "eager" : "lazy";
     img.alt = `${gallery.title} photograph ${index + 1}`;
 
-    if (img.complete) {
+    img.addEventListener("load", function () {
+      const ratio = img.naturalWidth / img.naturalHeight;
+
+      if (ratio >= 1.55) {
+        thumb.classList.add(index % 5 === 0 ? "big-wide" : "wide");
+      } else if (ratio <= 0.82) {
+        thumb.classList.add("tall");
+      } else {
+        thumb.classList.add("square");
+      }
+
       img.classList.add("loaded");
-    } else {
-      img.addEventListener("load", function () {
-        img.classList.add("loaded");
-      });
-    }
+    });
 
     thumb.appendChild(img);
     thumb.addEventListener("click", function () {
