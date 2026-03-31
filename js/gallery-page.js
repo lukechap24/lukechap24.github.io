@@ -69,32 +69,42 @@ function preloadNeighbors(index) {
   preloadImage(makeFull(gallery.photos[nextIndex]));
 }
 
-function renderThumbnails() {
+async function renderThumbnails() {
   thumbGrid.innerHTML = "";
+  thumbGrid.classList.remove("ready");
 
-  gallery.photos.forEach((photoUrl, index) => {
-    const thumb = document.createElement("div");
-    thumb.className = "thumb";
+  const fragment = document.createDocumentFragment();
 
-    const img = document.createElement("img");
-    img.src = makeThumb(photoUrl);
-    img.loading = "lazy";
-    img.alt = `${gallery.title} photograph ${index + 1}`;
+  const thumbPromises = gallery.photos.map((photoUrl, index) => {
+    return new Promise((resolve) => {
+      const thumb = document.createElement("div");
+      thumb.className = "thumb";
 
-    if (img.complete) {
-      img.classList.add("loaded");
-    } else {
-      img.addEventListener("load", function () {
-        img.classList.add("loaded");
+      const img = document.createElement("img");
+      img.src = makeThumb(photoUrl);
+      img.loading = index < 6 ? "eager" : "lazy";
+      img.alt = `${gallery.title} photograph ${index + 1}`;
+
+      img.onload = () => resolve({ thumb, index });
+      img.onerror = () => resolve({ thumb, index });
+
+      thumb.appendChild(img);
+      thumb.addEventListener("click", function () {
+        openLightbox(index);
       });
-    }
-
-    thumb.appendChild(img);
-    thumb.addEventListener("click", function () {
-      openLightbox(index);
     });
+  });
 
-    thumbGrid.appendChild(thumb);
+  const thumbItems = await Promise.all(thumbPromises);
+
+  thumbItems.forEach(({ thumb }) => {
+    fragment.appendChild(thumb);
+  });
+
+  thumbGrid.appendChild(fragment);
+
+  requestAnimationFrame(() => {
+    thumbGrid.classList.add("ready");
   });
 }
 
