@@ -69,42 +69,32 @@ function preloadNeighbors(index) {
   preloadImage(makeFull(gallery.photos[nextIndex]));
 }
 
-async function renderThumbnails() {
+function renderThumbnails() {
   thumbGrid.innerHTML = "";
-  thumbGrid.classList.remove("ready");
 
-  const fragment = document.createDocumentFragment();
+  gallery.photos.forEach((photoUrl, index) => {
+    const thumb = document.createElement("div");
+    thumb.className = "thumb";
 
-  const thumbPromises = gallery.photos.map((photoUrl, index) => {
-    return new Promise((resolve) => {
-      const thumb = document.createElement("div");
-      thumb.className = "thumb";
+    const img = document.createElement("img");
+    img.src = makeThumb(photoUrl);
+    img.loading = index < 6 ? "eager" : "lazy";
+    img.alt = `${gallery.title} photograph ${index + 1}`;
 
-      const img = document.createElement("img");
-      img.src = makeThumb(photoUrl);
-      img.loading = index < 6 ? "eager" : "lazy";
-      img.alt = `${gallery.title} photograph ${index + 1}`;
-
-      img.onload = () => resolve({ thumb, index });
-      img.onerror = () => resolve({ thumb, index });
-
-      thumb.appendChild(img);
-      thumb.addEventListener("click", function () {
-        openLightbox(index);
+    if (img.complete) {
+      img.classList.add("loaded");
+    } else {
+      img.addEventListener("load", function () {
+        img.classList.add("loaded");
       });
+    }
+
+    thumb.appendChild(img);
+    thumb.addEventListener("click", function () {
+      openLightbox(index);
     });
-  });
 
-  const thumbItems = await Promise.all(thumbPromises);
-
-  thumbItems.forEach(({ thumb }) => {
-    fragment.appendChild(thumb);
-  });
-
-  thumbGrid.appendChild(fragment);
-
-  requestAnimationFrame(() => {
-    thumbGrid.classList.add("ready");
+    thumbGrid.appendChild(thumb);
   });
 }
 
@@ -192,7 +182,7 @@ async function initGalleryPage() {
     coloradoLink.classList.add("active");
   }
 
- await renderThumbnails();
+  renderThumbnails();
 }
 
 if (backLink) {
