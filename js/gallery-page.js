@@ -192,7 +192,7 @@ async function initGalleryPage() {
     coloradoLink.classList.add("active");
   }
 
-  renderThumbnails();
+ await renderThumbnails();
 }
 
 if (backLink) {
