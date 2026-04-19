@@ -16,4 +16,4 @@ const gallery = {
 "https://res.cloudinary.com/dkarbzpvo/image/upload/v1776565803/DSC_6457-Edit_w8hidw.jpg",
 "https://res.cloudinary.com/dkarbzpvo/image/upload/v1776565803/kilinight1pt2_hi57af.jpg"
     ]
-  }
+  };
