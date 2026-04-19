@@ -1,8 +1,8 @@
 const gallery = {
-  title: "Mt. Kilimanjaro",
-  date: "August, 2018",
-  section: "travels",
- photos: [
+    title: "Mt. Kilimanjaro",
+    date: "August, 2018",
+    section: "travels",
+    photos: [
 "https://res.cloudinary.com/dkarbzpvo/image/upload/v1776565807/DSC_6818_w3swbg.jpg",
 "https://res.cloudinary.com/dkarbzpvo/image/upload/v1776565810/kilitopdiamondpsd_hvkakh.jpg",
 "https://res.cloudinary.com/dkarbzpvo/image/upload/v1776565808/DSC_6762-Edit_ik4rw8.jpg",
@@ -15,5 +15,5 @@ const gallery = {
 "https://res.cloudinary.com/dkarbzpvo/image/upload/v1776565803/DSC_6876_j59v7w.jpg",
 "https://res.cloudinary.com/dkarbzpvo/image/upload/v1776565803/DSC_6457-Edit_w8hidw.jpg",
 "https://res.cloudinary.com/dkarbzpvo/image/upload/v1776565803/kilinight1pt2_hi57af.jpg"
-  ]
-};
+    ]
+  }
