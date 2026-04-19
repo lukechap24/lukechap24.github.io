@@ -2,6 +2,7 @@ const gallery = {
   title: "Mt. Kilimanjaro",
   date: "August, 2018",
   section: "travels",
+  [
 "https://res.cloudinary.com/dkarbzpvo/image/upload/v1776565807/DSC_6818_w3swbg.jpg",
 "https://res.cloudinary.com/dkarbzpvo/image/upload/v1776565810/kilitopdiamondpsd_hvkakh.jpg",
 "https://res.cloudinary.com/dkarbzpvo/image/upload/v1776565808/DSC_6762-Edit_ik4rw8.jpg",
