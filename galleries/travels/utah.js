@@ -1,0 +1,32 @@
+const gallery = {
+  title: "Utah",
+  date: "March, 2019",
+  section: "travels",
+  photos: [
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1776565857/DSC_7722_bdvuqu.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1776565882/DSC_8273_crt7s5.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1776565880/DSC_7802_bwxmdn.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1776565879/DSC_7778_p7otpq.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1776565879/DSC_7973_zh3o3i.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1776565879/DSC_8261_bzeein.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1776565858/DSC_7902_wo4tuc.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1776565858/DJI_0565_cu3vuo.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1776565857/DSC_7722_bdvuqu.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1776565856/DJI_0588_r16qrq.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1776565855/DJI_0551_a8lfvg.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1776565855/DSC_8150-Edit_asb759.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1776565840/DSC_8033_bjuvdb.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1776565839/DSC_7869_pga7ly.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1776565839/DSC_8195_bnaadw.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1776565837/DSC_8194_tdw8z9.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1776565836/DJI_0623_gjzxjf.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1776565836/DJI_0582_etb0dt.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1776565836/DSC_7799_lqm0s6.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1776565834/DJI_0493_lq1kxv.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1776565833/DSC_7771_qrsocv.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1776565833/DSC_7942_ipbgak.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1776565831/DSC_7826_obet44.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1776565830/DSC_7830_oz6xg3.jpg",
+"https://res.cloudinary.com/dkarbzpvo/image/upload/v1776565830/DSC_7869-2_eejxgi.jpg"
+  ]
+};
