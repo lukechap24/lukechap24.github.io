@@ -1,5 +1,5 @@
 const gallery = {
-    title: "CO NPs",
+    title: "Telluride",
     date: "June, 2026",
     section: "colorado",
     photos: [
